@@ -1,8 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "api",
-  "main": "src/index.ts",
-  "compatibility_date": "2026-07-25"
+  "name": "smachill",
+  "main": "./api/src/index.ts",
+  "compatibility_date": "2026-07-25",
+  "assets": {
+      "directory": "./web/dist"
+    }
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
