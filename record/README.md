@@ -8,6 +8,7 @@ smachill の開発過程を都度残していく場所。あとで見返して�
 |---|---|---|---|
 | [01](01-cloudflare-worker-monorepo-d1.md) | Cloudflare Workers 1つで Astro + Hono + D1 を動かすまで | 2026-08-20 〜 08-22 | 初回デプロイ、1 Worker 構成、開発環境、pnpm モノレポ化、D1 導入、最初のエンドポイント |
 | [02](02-requirements-schema-read-apis-frontend.md) | 要件からDB設計を導き、読み取りAPIとフロントを繋ぐまで | 2026-08-22 | ドメインの言語化、オプション対応のスキーマ拡張、読み取りAPI 3本、フロント接続 |
+| [03](03-availability-and-booking.md) | 空き判定と予約作成 — 日付計算とトランザクション | 2026-08-23 〜 08-24 | 段階的実装、JS日付計算の罠、`NOT IN`、バリデーション設計、`batch()` とトランザクション |
 
 ## 書き方の方針
 
