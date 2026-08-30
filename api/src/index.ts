@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { html } from "hono/html";
 
 const app = new Hono<{ Bindings: CloudflareBindings }>();
 
@@ -46,6 +47,82 @@ app.get("/api/plans", async (c) => {
     .prepare("SELECT * FROM plans")
     .all();
   return c.json(results);
+});
+
+type PlanRow = {
+  id: string;
+  name: string;
+  capacity: number;
+  base_price: number;
+  nights: number;
+  extra_night_price: number;
+  max_nights: number | null;
+};
+
+// 上の /api/plans と同じデータを HTML で返す。
+// DB を引く部分は同一で、違うのは最後の c.json / c.html だけ。
+app.get("/plans-html", async (c) => {
+  const { results } = await c.env.smachill_db
+    .prepare("SELECT * FROM plans")
+    .all<PlanRow>();
+
+  return c.html(html`
+    <!doctype html>
+    <html lang="ja">
+      <head>
+        <meta charset="utf-8" />
+        <title>プラン一覧</title>
+        <style>
+          body {
+            font-family: sans-serif;
+            margin: 2rem;
+          }
+          table {
+            border-collapse: collapse;
+          }
+          th,
+          td {
+            border: 1px solid #ccc;
+            padding: 0.4rem 0.8rem;
+          }
+          td.num {
+            text-align: right;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>プラン一覧</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>名前</th>
+              <th>定員</th>
+              <th>基本料金</th>
+              <th>標準泊数</th>
+              <th>延長/泊</th>
+              <th>最大泊数</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${results.map(
+              (p) => html`
+                <tr>
+                  <td>${p.id}</td>
+                  <td>${p.name}</td>
+                  <td class="num">${p.capacity}人</td>
+                  <td class="num">${p.base_price.toLocaleString()}円</td>
+                  <td class="num">${p.nights}泊</td>
+                  <td class="num">${p.extra_night_price.toLocaleString()}円</td>
+                  <td class="num">${p.max_nights ?? "上限なし"}</td>
+                </tr>
+              `,
+            )}
+          </tbody>
+        </table>
+      </body>
+    </html>
+  `);
 });
 
 app.get("/api/options", async (c) => {
@@ -252,7 +329,9 @@ app.post("/api/bookings", async (c) => {
 
   // ④ 配送ゾーン
   const zone = await db
-    .prepare("SELECT prefecture, days, fee FROM shipping_zones WHERE prefecture = ?")
+    .prepare(
+      "SELECT prefecture, days, fee FROM shipping_zones WHERE prefecture = ?",
+    )
     .bind(prefecture)
     .first<{ prefecture: string; days: number; fee: number }>();
 
@@ -289,7 +368,10 @@ app.post("/api/bookings", async (c) => {
     const master = optionMaster.get(input?.option_id);
     if (!master) {
       return c.json(
-        { error: "指定のオプションは利用できません", option_id: input?.option_id },
+        {
+          error: "指定のオプションは利用できません",
+          option_id: input?.option_id,
+        },
         400,
       );
     }
