@@ -23,7 +23,7 @@ import Layout from "../layouts/Layout.astro";
         if (list) {
             list.innerHTML = plans.map(
                 (plan) =>
-                    `<li>${plan.name} / 定員${plan.capacity}名 / ${plan.base_price.toLocaleString()}円（${plan.nights}泊）</li>`,
+                    `<li>${plan.name} / 定員${plan.capacity}名 / ${plan.base_price.toLocaleString()}円（${plan.included_days}日まで）</li>`,
             );
         }
     } catch (error) {

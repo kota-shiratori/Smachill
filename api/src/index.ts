@@ -5,6 +5,12 @@ const app = new Hono<{ Bindings: CloudflareBindings }>();
 
 const MS_PER_DAY = 86400000; // 1日のミリ秒数
 
+// 発送日として最短でいつを押さえられるか（今日から何日後か）。
+// 受け渡しは配送一本なので、利用開始日の前に必ず発送日が要る。
+// 集荷には締切があるため当日発送は受け付けない = 最短で明日発送。
+// この値を 0 にすると lock_from が過去日になり、物理的に不可能な予約が台帳に入る。
+const MIN_LEAD_DAYS = 1;
+
 // 'YYYY-MM-DD' を n 日ずらして 'YYYY-MM-DD' で返す（n が負なら過去へ）
 function addDays(dateStr: string, n: number): string {
   const d = new Date(dateStr);
@@ -54,9 +60,10 @@ type PlanRow = {
   name: string;
   capacity: number;
   base_price: number;
-  nights: number;
-  extra_night_price: number;
-  max_nights: number | null;
+  included_days: number;
+  extra_day_price: number;
+  max_days: number | null;
+  turnaround_days: number;
 };
 
 // 上の /api/plans と同じデータを HTML で返す。
@@ -99,9 +106,10 @@ app.get("/plans-html", async (c) => {
               <th>名前</th>
               <th>定員</th>
               <th>基本料金</th>
-              <th>標準泊数</th>
-              <th>延長/泊</th>
-              <th>最大泊数</th>
+              <th>標準日数</th>
+              <th>延長/日</th>
+              <th>最大日数</th>
+              <th>整備日数</th>
             </tr>
           </thead>
           <tbody>
@@ -112,9 +120,10 @@ app.get("/plans-html", async (c) => {
                   <td>${p.name}</td>
                   <td class="num">${p.capacity}人</td>
                   <td class="num">${p.base_price.toLocaleString()}円</td>
-                  <td class="num">${p.nights}泊</td>
-                  <td class="num">${p.extra_night_price.toLocaleString()}円</td>
-                  <td class="num">${p.max_nights ?? "上限なし"}</td>
+                  <td class="num">${p.included_days}日</td>
+                  <td class="num">${p.extra_day_price.toLocaleString()}円</td>
+                  <td class="num">${p.max_days ?? "上限なし"}</td>
+                  <td class="num">${p.turnaround_days}日</td>
                 </tr>
               `,
             )}
@@ -174,8 +183,9 @@ app.get("/api/availability", async (c) => {
   }
 
   // ③ 前後関係
-  const nights = diffDays(use_start, use_end) + 1;
-  if (nights < 1) {
+  //    use_start === use_end は日帰り。1日ぶんの利用として正当に通す。
+  const use_days = diffDays(use_start, use_end) + 1;
+  if (use_days < 1) {
     return c.json(
       { error: "use_end は use_start 以降の日付を指定してください" },
       400,
@@ -187,19 +197,19 @@ app.get("/api/availability", async (c) => {
     return c.json({ error: "過去の日付は指定できません" }, 400);
   }
 
-  // ⑤ プランの存在確認と泊数の上限
+  // ⑤ プランの存在確認と利用日数の上限
   const plan = await c.env.smachill_db
-    .prepare("SELECT id, max_nights FROM plans WHERE id = ?")
+    .prepare("SELECT id, max_days, turnaround_days FROM plans WHERE id = ?")
     .bind(plan_id)
-    .first<{ id: string; max_nights: number | null }>();
+    .first<{ id: string; max_days: number | null; turnaround_days: number }>();
 
   if (plan === null) {
     return c.json({ error: "プランが見つかりません", plan_id }, 404);
   }
 
-  if (plan.max_nights !== null && nights > plan.max_nights) {
+  if (plan.max_days !== null && use_days > plan.max_days) {
     return c.json(
-      { error: `レンタルは最大${plan.max_nights}泊までです`, nights },
+      { error: `レンタルは最大${plan.max_days}日までです`, use_days },
       400,
     );
   }
@@ -216,10 +226,32 @@ app.get("/api/availability", async (c) => {
     return c.json({ error: "配送対象外の地域です", prefecture }, 404);
   }
 
-  // ⑦ 空き判定
+  // ⑦ 占有期間の算出
+  //    機材が他の予約に回せない期間は「顧客が使う期間」より前後に伸びる。
+  //      lock_from    発送日（配送日数ぶん前）
+  //      use_start 〜 use_end
+  //      ship_back_to 返送到着日（配送日数ぶん後）
+  //      lock_to      整備完了日（さらに turnaround_days ぶん後）
   const lock_from = addDays(use_start, -zone.days);
-  const lock_to = addDays(use_end, zone.days);
+  const ship_back_to = addDays(use_end, zone.days);
+  const lock_to = addDays(ship_back_to, plan.turnaround_days);
 
+  // ⑧ 発送が間に合うか
+  //    配送一本なので利用開始日の前に必ず発送日が要る。ここを見ないと
+  //    lock_from が過去日になり、今日発送して今日届く予約が成立してしまう。
+  const earliest_ship_out = addDays(today(), MIN_LEAD_DAYS);
+  if (lock_from < earliest_ship_out) {
+    return c.json(
+      {
+        error: "発送が間に合いません",
+        shipping_days: zone.days,
+        earliest_use_start: addDays(earliest_ship_out, zone.days),
+      },
+      400,
+    );
+  }
+
+  // ⑨ 空き判定
   const { results } = await c.env.smachill_db
     .prepare(
       `SELECT id FROM inventory_items
@@ -237,10 +269,12 @@ app.get("/api/availability", async (c) => {
   return c.json({
     use_start,
     use_end,
-    nights,
+    use_days,
     prefecture,
     shipping_days: zone.days,
+    turnaround_days: plan.turnaround_days,
     lock_from,
+    ship_back_to,
     lock_to,
     available: available_item_ids.length > 0,
     available_item_ids,
@@ -292,8 +326,8 @@ app.post("/api/bookings", async (c) => {
     );
   }
 
-  const nights = diffDays(use_start, use_end) + 1;
-  if (nights < 1) {
+  const use_days = diffDays(use_start, use_end) + 1;
+  if (use_days < 1) {
     return c.json(
       { error: "use_end は use_start 以降の日付を指定してください" },
       400,
@@ -306,23 +340,24 @@ app.post("/api/bookings", async (c) => {
   // ③ プラン
   const plan = await db
     .prepare(
-      "SELECT id, base_price, nights, extra_night_price, max_nights FROM plans WHERE id = ?",
+      "SELECT id, base_price, included_days, extra_day_price, max_days, turnaround_days FROM plans WHERE id = ?",
     )
     .bind(plan_id)
     .first<{
       id: string;
       base_price: number;
-      nights: number;
-      extra_night_price: number;
-      max_nights: number | null;
+      included_days: number;
+      extra_day_price: number;
+      max_days: number | null;
+      turnaround_days: number;
     }>();
 
   if (plan === null) {
     return c.json({ error: "プランが見つかりません", plan_id }, 404);
   }
-  if (plan.max_nights !== null && nights > plan.max_nights) {
+  if (plan.max_days !== null && use_days > plan.max_days) {
     return c.json(
-      { error: `レンタルは最大${plan.max_nights}泊までです`, nights },
+      { error: `レンタルは最大${plan.max_days}日までです`, use_days },
       400,
     );
   }
@@ -410,14 +445,31 @@ app.post("/api/bookings", async (c) => {
   }
 
   // ⑥ 金額の確定（すべてサーバー側で計算する）
-  const extra_nights = Math.max(0, nights - plan.nights);
-  const base_amount = plan.base_price + extra_nights * plan.extra_night_price;
+  //    included_days ぶんは base_price に含まれる。日帰り（use_days = 1）でも
+  //    base_price を下回らないので、これが実質の最低料金になる。
+  const extra_days = Math.max(0, use_days - plan.included_days);
+  const base_amount = plan.base_price + extra_days * plan.extra_day_price;
   const shipping_fee = zone.fee + option_shipping;
   const total_amount = base_amount + options_amount + shipping_fee;
 
-  // ⑦ 空き個体を1つ選ぶ
+  // ⑦ 占有期間の算出と発送リードタイムの検証（availability と同じ規則）
   const lock_from = addDays(use_start, -zone.days);
-  const lock_to = addDays(use_end, zone.days);
+  const ship_back_to = addDays(use_end, zone.days);
+  const lock_to = addDays(ship_back_to, plan.turnaround_days);
+
+  const earliest_ship_out = addDays(today(), MIN_LEAD_DAYS);
+  if (lock_from < earliest_ship_out) {
+    return c.json(
+      {
+        error: "発送が間に合いません",
+        shipping_days: zone.days,
+        earliest_use_start: addDays(earliest_ship_out, zone.days),
+      },
+      400,
+    );
+  }
+
+  // ⑧ 空き個体を1つ選ぶ
 
   const { results: freeItems } = await db
     .prepare(
@@ -441,20 +493,26 @@ app.post("/api/bookings", async (c) => {
   }
   const inventory_item_id = freeItems[0].id;
 
-  // ⑧ 占有台帳に入れる行を組み立てる
+  // ⑨ 占有台帳に入れる行を組み立てる
+  //    dateRange は from > to なら空配列を返すので、
+  //    turnaround_days = 0 の運用に切り替えても MAINTENANCE が 0 行になるだけで済む。
   const itemDays = [
     ...dateRange(lock_from, addDays(use_start, -1)).map((date) => ({
       date,
       kind: "SHIP_OUT",
     })),
     ...dateRange(use_start, use_end).map((date) => ({ date, kind: "USE" })),
-    ...dateRange(addDays(use_end, 1), lock_to).map((date) => ({
+    ...dateRange(addDays(use_end, 1), ship_back_to).map((date) => ({
       date,
       kind: "SHIP_BACK",
     })),
+    ...dateRange(addDays(ship_back_to, 1), lock_to).map((date) => ({
+      date,
+      kind: "MAINTENANCE",
+    })),
   ];
 
-  // ⑨ すべてまとめて1つのトランザクションで書き込む
+  // ⑩ すべてまとめて1つのトランザクションで書き込む
   const booking_id = crypto.randomUUID();
 
   const statements = [
@@ -530,10 +588,12 @@ app.post("/api/bookings", async (c) => {
       plan_id,
       use_start,
       use_end,
-      nights,
+      use_days,
       prefecture,
       shipping_days: zone.days,
+      turnaround_days: plan.turnaround_days,
       lock_from,
+      ship_back_to,
       lock_to,
       inventory_item_id,
       options: optionLines,

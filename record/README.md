@@ -10,6 +10,7 @@ smachill の開発過程を都度残していく場所。あとで見返して�
 | [02](02-requirements-schema-read-apis-frontend.md) | 要件からDB設計を導き、読み取りAPIとフロントを繋ぐまで | 2026-08-22 | ドメインの言語化、オプション対応のスキーマ拡張、読み取りAPI 3本、フロント接続 |
 | [03](03-availability-and-booking.md) | 空き判定と予約作成 — 日付計算とトランザクション | 2026-08-23 〜 08-24 | 段階的実装、JS日付計算の罠、`NOT IN`、バリデーション設計、`batch()` とトランザクション |
 | [04](04-why-api.md) | なぜ API を作るのか — HTML を返す実験と、7日物の dev サーバー | 2026-08-30 | API と SSR の比較、`hono/html`、エンドポイントの仕分け、`SELECT *` の漏れ、壊れた `wrangler dev` の診断 |
+| [05](05-delivery-model-requirements.md) | 受け渡しモデルを配送一本に確定し、占有期間を引き直す | 2026-09-04 | 要件の再確定（配送／整備日／日帰り／対応エリア）、`turnaround_days`、泊→日、最小リードタイムの穴 |
 
 ## 書き方の方針
 

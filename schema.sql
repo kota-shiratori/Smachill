@@ -3,10 +3,21 @@ CREATE TABLE plans (
   id          TEXT PRIMARY KEY,      -- 'morzh-4p'
   name        TEXT NOT NULL,         -- 'MORZH 4人用'
   capacity    INTEGER NOT NULL,
-  base_price  INTEGER NOT NULL,      -- 円・税込。nights 泊ぶんを含んだ基本料金
-  nights      INTEGER NOT NULL,      -- base_price に含まれる標準レンタル泊数
-  extra_night_price INTEGER NOT NULL, -- nights を超えた分、1泊あたりの追加料金
-  max_nights  INTEGER,               -- 受付可能な最大泊数。NULL なら上限なし
+  base_price  INTEGER NOT NULL,      -- 円・税込。included_days 日ぶんを含んだ基本料金
+
+  -- 期間は「泊」ではなく「日」で数える。
+  -- 日帰りレンタル（発送日と返却日が同じ）を受け付けるため、0泊が正当な値になり、
+  -- 泊数で数えると「0泊は無料なのか」が表現できなくなる。
+  -- included_days / max_days はどちらも use_start 〜 use_end の両端を含む日数。
+  included_days   INTEGER NOT NULL,  -- base_price に含まれる標準利用日数
+  extra_day_price INTEGER NOT NULL,  -- included_days を超えた分、1日あたりの追加料金
+  max_days        INTEGER,           -- 受付可能な最大利用日数。NULL なら上限なし
+
+  -- 返送到着後、乾燥・整備で機材が拘束される日数。
+  -- テントサウナは濡れて戻るため、到着当日にそのまま次へ出せない。
+  -- 配送先ではなく機材の属性なので shipping_zones ではなく plans に置く。
+  turnaround_days INTEGER NOT NULL DEFAULT 1,
+
   created_at  TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
@@ -14,10 +25,13 @@ CREATE TABLE plans (
 CREATE TABLE inventory_items (
   id       TEXT PRIMARY KEY,         -- 'MORZH-001'
   plan_id  TEXT NOT NULL REFERENCES plans(id),
-  status   TEXT NOT NULL             -- AVAILABLE / MAINTENANCE / RETIRED
+  status   TEXT NOT NULL
+           CHECK (status IN ('AVAILABLE', 'MAINTENANCE', 'RETIRED'))
 );
 
 -- 都道府県 → 片道配送日数・送料
+-- 受け渡しは配送一本。手渡しは扱わないので、対象エリアは必ずここに行がある。
+-- 行が無い都道府県 = 配送対象外（404）。エリアの線引きをこの表だけで行える。
 CREATE TABLE shipping_zones (
   prefecture TEXT PRIMARY KEY,       -- '千葉県'
   days       INTEGER NOT NULL,       -- 片道日数
@@ -30,10 +44,11 @@ CREATE TABLE shipping_zones (
 CREATE TABLE options (
   id                 TEXT PRIMARY KEY,  -- 'chair', 'coffee-kit'
   name               TEXT NOT NULL,
-  price              INTEGER NOT NULL,  -- 1個あたり・1レンタルにつき固定（泊数と無関係）
+  price              INTEGER NOT NULL,  -- 1個あたり・1レンタルにつき固定（日数と無関係）
   shipping_surcharge INTEGER NOT NULL DEFAULT 0,  -- 1個あたりの往復送料加算（円）
   max_quantity       INTEGER NOT NULL DEFAULT 1,  -- 1予約あたりの上限個数
-  status             TEXT NOT NULL,     -- AVAILABLE / UNAVAILABLE
+  status             TEXT NOT NULL
+                     CHECK (status IN ('AVAILABLE', 'UNAVAILABLE')),
   sort_order         INTEGER NOT NULL DEFAULT 0,  -- 画面表示順
   created_at         TEXT NOT NULL DEFAULT (datetime('now'))
 );
@@ -41,10 +56,11 @@ CREATE TABLE options (
 -- 予約トランザクション
 CREATE TABLE bookings (
   id            TEXT PRIMARY KEY,
-  status        TEXT NOT NULL,       -- HOLD / PAID / CANCELLED
+  status        TEXT NOT NULL
+                CHECK (status IN ('HOLD', 'PAID', 'CANCELLED')),
   plan_id       TEXT NOT NULL REFERENCES plans(id),
-  use_start     TEXT NOT NULL,       -- YYYY-MM-DD
-  use_end       TEXT NOT NULL,
+  use_start     TEXT NOT NULL,       -- YYYY-MM-DD。顧客が使い始める日
+  use_end       TEXT NOT NULL,       -- YYYY-MM-DD。use_start と同日なら日帰り
   prefecture    TEXT NOT NULL REFERENCES shipping_zones(prefecture),
   address       TEXT,                -- PAID確定時までNULL可
   customer_name TEXT,
@@ -83,11 +99,18 @@ CREATE TABLE booking_options (
 );
 
 -- ★ 個体 × 日付 の占有台帳。このテーブルが二重予約を物理的に不可能にする
+--
+-- 1予約が押さえる連続日：
+--   SHIP_OUT    発送 〜 到着前日        （zones.days 日）
+--   USE         use_start 〜 use_end   （顧客が使う日。日帰りなら1日）
+--   SHIP_BACK   返送 〜 返送到着日      （zones.days 日）
+--   MAINTENANCE 返送到着の翌日から      （plans.turnaround_days 日。乾燥・整備）
 CREATE TABLE item_days (
   inventory_item_id TEXT NOT NULL REFERENCES inventory_items(id),
   date              TEXT NOT NULL,   -- YYYY-MM-DD
   booking_id        TEXT NOT NULL REFERENCES bookings(id) ON DELETE CASCADE,
-  kind              TEXT NOT NULL,   -- SHIP_OUT / USE / SHIP_BACK
+  kind              TEXT NOT NULL
+                    CHECK (kind IN ('SHIP_OUT', 'USE', 'SHIP_BACK', 'MAINTENANCE')),
   PRIMARY KEY (inventory_item_id, date)
 );
 CREATE INDEX idx_item_days_booking ON item_days(booking_id);
