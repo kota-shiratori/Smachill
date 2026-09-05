@@ -1,0 +1,531 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&amp;family=Zen+Old+Mincho:wght@400;600;900&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=BIZ+UDPGothic:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #6FA9B4; }
+    a:hover { color: #8FC3CD; }
+  </style>
+</helmet>
+
+<div style="width: 2048px; background: #45494C; font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; display: flex; flex-direction: column; gap: 0;">
+
+  <!-- ================= ボードのヘッダ ================= -->
+  <div style="padding: 44px 48px 36px; display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; align-items: baseline; gap: 18px;">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.26em; color: #B9BDBE;">PHASE 1</div>
+      <div style="font-size: 26px; font-weight: 700; color: #F2F3F1; letter-spacing: 0.02em;">Smachill — トーン探索</div>
+    </div>
+    <div style="font-size: 14px; line-height: 1.8; color: #C8CCCC; max-width: 62em; text-wrap: pretty;">3つの方向を並べた。1つ選ぶか、要素を混ぜて指定してほしい。ここで決まったものが画面6枚すべてを規定するので、まだ画面設計には入っていない。</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px;">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; color: #DFE2E1; background: #33373A; padding: 7px 12px;">日本語が主</div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; color: #DFE2E1; background: #33373A; padding: 7px 12px;">金額と日付は等幅・等幅数字</div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; color: #DFE2E1; background: #33373A; padding: 7px 12px;">AIの発話と確定値は別レイヤー</div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; color: #DFE2E1; background: #33373A; padding: 7px 12px;">熱と冷の対比を配色に持つ</div>
+    </div>
+  </div>
+
+  <!-- ================= 3方向 ================= -->
+  <div style="display: flex; gap: 32px; padding: 0 48px 48px; align-items: flex-start;">
+
+    <!-- ========================================================= -->
+    <!-- A 熾火                                                     -->
+    <!-- ========================================================= -->
+    <div style="width: 464px; background: #0C0A09; display: flex; flex-direction: column; gap: 0;">
+
+      <div style="padding: 32px 32px 26px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #2A241D;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.26em; color: #D6653A;">DIRECTION A</div>
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <div style="font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-weight: 700; font-size: 40px; color: #EDE6DA; line-height: 1.1;">熾火</div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; color: #6F6659;">OKIBI</div>
+        </div>
+        <div style="font-size: 13.5px; line-height: 1.9; color: #A2988A; text-wrap: pretty;">夜と儀式。暗がりに火の残りだけがある。明朝の大見出しで押し、情報は最小限に絞る。</div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid #2A241D;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">PALETTE / 配色</div>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #0C0A09; border: 1px solid #2A241D;"></div><div style="font-size: 11px; color: #A2988A;">地</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #6F6659;">0C0A09</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #16130F; border: 1px solid #2A241D;"></div><div style="font-size: 11px; color: #A2988A;">面</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #6F6659;">16130F</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #EDE6DA; border: 1px solid #2A241D;"></div><div style="font-size: 11px; color: #A2988A;">文字</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #6F6659;">EDE6DA</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #A2988A; border: 1px solid #2A241D;"></div><div style="font-size: 11px; color: #A2988A;">副文字</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #6F6659;">A2988A</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #D6653A; border: 1px solid #2A241D;"></div><div style="font-size: 11px; color: #A2988A;">熱</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #6F6659;">D6653A</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #6FA9B4; border: 1px solid #2A241D;"></div><div style="font-size: 11px; color: #A2988A;">冷</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #6F6659;">6FA9B4</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #8FAE7C; border: 1px solid #2A241D;"></div><div style="font-size: 11px; color: #A2988A;">空きあり</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #6F6659;">8FAE7C</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #C0574A; border: 1px solid #2A241D;"></div><div style="font-size: 11px; color: #A2988A;">空きなし</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #6F6659;">C0574A</div></div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 18px; border-bottom: 1px solid #2A241D;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">TYPE / 書体</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-weight: 700; font-size: 34px; line-height: 1.28; color: #EDE6DA; letter-spacing: 0.01em;">次の週末を、<br>ととのいに。</div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #6F6659;">見出し — Shippori Mincho 700</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-size: 13.5px; line-height: 1.95; color: #C4BBAC; text-wrap: pretty;">千葉県までは片道1日。9月20日から2泊お使いいただくあいだ、サウナは9月19日から9月22日まで、あなたのために押さえられます。</div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #6F6659;">本文 — Zen Kaku Gothic New 400</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: baseline; gap: 18px; font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; color: #EDE6DA;">
+            <div style="font-size: 30px; font-weight: 500;">¥38,000</div>
+            <div style="font-size: 14px; color: #A2988A;">2026.09.20 → 09.21</div>
+          </div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #6F6659;">数値 — JetBrains Mono / tabular-nums</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #2A241D;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">① AI の発話</div>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: #D6653A; margin-top: 9px; flex-shrink: 0;"></div>
+          <div style="font-size: 14.5px; line-height: 1.95; color: #DCD3C4; text-wrap: pretty;">9月20日から2泊、千葉県ですね。空いています。内訳を出しますね。</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #2A241D;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">② 確定カード（サーバー計算値）</div>
+        <div style="background: #16130F; border: 1px solid #322A21; display: flex; flex-direction: column;">
+          <div style="padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #262019;">
+            <div style="display: flex; align-items: center; gap: 9px;">
+              <div style="width: 7px; height: 7px; background: #8FAE7C;"></div>
+              <div style="font-size: 13px; font-weight: 500; color: #8FAE7C;">空きあり</div>
+            </div>
+            <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; color: #6F6659; font-variant-numeric: tabular-nums;">2泊 · 千葉県 · 片道1日</div>
+          </div>
+          <div style="padding: 18px 20px 16px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 16px; color: #EDE6DA; font-variant-numeric: tabular-nums; letter-spacing: 0.01em;">2026.09.20 → 09.21</div>
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.18em; color: #6F6659;">サウナが押さえられる4日間</div>
+              <div style="display: flex; gap: 3px;">
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;"><div style="height: 26px; background: #3A2D22;"></div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659; font-variant-numeric: tabular-nums;">9/19 出荷</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;"><div style="height: 26px; background: #D6653A;"></div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #A2988A; font-variant-numeric: tabular-nums;">9/20 利用</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;"><div style="height: 26px; background: #D6653A;"></div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #A2988A; font-variant-numeric: tabular-nums;">9/21 利用</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;"><div style="height: 26px; background: #3A2D22;"></div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659; font-variant-numeric: tabular-nums;">9/22 返送</div></div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 7px; padding-top: 12px; border-top: 1px solid #262019;">
+              <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #A2988A; font-variant-numeric: tabular-nums;"><span>基本料金（2泊）</span><span>¥30,000</span></div>
+              <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #A2988A; font-variant-numeric: tabular-nums;"><span>送料（往復）</span><span>¥8,000</span></div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; margin-top: 3px; border-top: 1px solid #262019; font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums;"><span style="font-size: 12px; color: #A2988A;">合計</span><span style="font-size: 24px; color: #EDE6DA; font-weight: 500;">¥38,000</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #2A241D;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">③ 主ボタン</div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div style="background: #D6653A; color: #150D08; font-size: 14.5px; font-weight: 700; padding: 15px 26px; border-radius: 2px; letter-spacing: 0.02em;">この内容で予約する</div>
+          <div style="color: #A2988A; font-size: 14px; padding: 15px 8px; border-bottom: 1px solid #40382E;">別の日を探す</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px 32px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #8FAE7C;">効く</div>
+          <div style="font-size: 12.5px; line-height: 1.85; color: #A2988A; text-wrap: pretty;">LPの炎・蒸気・水の演出がそのまま生きる。夜の川辺の記憶に直結し、LPと予約UIが同じ世界のまま繋がる。</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #C0574A;">弱い</div>
+          <div style="font-size: 12.5px; line-height: 1.85; color: #A2988A; text-wrap: pretty;">暗い画面で金額と日付を読ませるのは常に不利。住所入力の長いフォームで疲れる。屋外の直射日光下で最も読みにくい。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- B 白日                                                     -->
+    <!-- ========================================================= -->
+    <div style="width: 464px; background: #F7F3EC; display: flex; flex-direction: column; gap: 0;">
+
+      <div style="padding: 32px 32px 26px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #DED5C6;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.26em; color: #B4462B;">DIRECTION B</div>
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <div style="font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; font-weight: 900; font-size: 40px; color: #1F1B16; line-height: 1.1; letter-spacing: -0.01em;">白日</div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; color: #9A9085;">HAKUJITSU</div>
+        </div>
+        <div style="font-family: 'Zen Old Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 13.5px; line-height: 1.95; color: #6E6459; text-wrap: pretty;">昼と紙。旅館のしおりの質感。太いゴシックで見出しを立て、本文は明朝で読ませる（Aと真逆の組み方）。</div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid #DED5C6;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #9A9085;">PALETTE / 配色</div>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #F7F3EC; border: 1px solid #DED5C6;"></div><div style="font-size: 11px; color: #6E6459;">地</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #9A9085;">F7F3EC</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #FFFDF9; border: 1px solid #DED5C6;"></div><div style="font-size: 11px; color: #6E6459;">面</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #9A9085;">FFFDF9</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #1F1B16; border: 1px solid #DED5C6;"></div><div style="font-size: 11px; color: #6E6459;">文字</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #9A9085;">1F1B16</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #6E6459; border: 1px solid #DED5C6;"></div><div style="font-size: 11px; color: #6E6459;">副文字</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #9A9085;">6E6459</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #B4462B; border: 1px solid #DED5C6;"></div><div style="font-size: 11px; color: #6E6459;">熱</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #9A9085;">B4462B</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #2E4E6B; border: 1px solid #DED5C6;"></div><div style="font-size: 11px; color: #6E6459;">冷</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #9A9085;">2E4E6B</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #3F6B4A; border: 1px solid #DED5C6;"></div><div style="font-size: 11px; color: #6E6459;">空きあり</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #9A9085;">3F6B4A</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #A33C2B; border: 1px solid #DED5C6;"></div><div style="font-size: 11px; color: #6E6459;">空きなし</div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #9A9085;">A33C2B</div></div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 18px; border-bottom: 1px solid #DED5C6;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #9A9085;">TYPE / 書体</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; font-weight: 900; font-size: 34px; line-height: 1.3; color: #1F1B16; letter-spacing: -0.015em;">次の週末を、<br>ととのいに。</div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #9A9085;">見出し — Zen Kaku Gothic New 900</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-family: 'Zen Old Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 14px; line-height: 2.0; color: #3D372F; text-wrap: pretty;">千葉県までは片道1日。9月20日から2泊お使いいただくあいだ、サウナは9月19日から9月22日まで、あなたのために押さえられます。</div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #9A9085;">本文 — Zen Old Mincho 400</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: baseline; gap: 18px; font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; color: #1F1B16;">
+            <div style="font-size: 30px; font-weight: 500;">¥38,000</div>
+            <div style="font-size: 14px; color: #6E6459;">2026.09.20 → 09.21</div>
+          </div>
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #9A9085;">数値 — JetBrains Mono / tabular-nums</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #DED5C6;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #9A9085;">① AI の発話</div>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: #B4462B; margin-top: 10px; flex-shrink: 0;"></div>
+          <div style="font-family: 'Zen Old Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 15px; line-height: 2.0; color: #2B261F; text-wrap: pretty;">9月20日から2泊、千葉県ですね。空いています。内訳を出しますね。</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #DED5C6;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #9A9085;">② 確定カード（サーバー計算値）</div>
+        <div style="background: #FFFDF9; border: 1px solid #DED5C6; box-shadow: 0 1px 2px rgba(31, 27, 22, 0.05), 0 8px 24px -14px rgba(31, 27, 22, 0.22); display: flex; flex-direction: column;">
+          <div style="padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #EDE6D9;">
+            <div style="display: flex; align-items: center; gap: 9px;">
+              <div style="width: 7px; height: 7px; background: #3F6B4A;"></div>
+              <div style="font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; font-size: 13px; font-weight: 700; color: #3F6B4A;">空きあり</div>
+            </div>
+            <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; color: #9A9085; font-variant-numeric: tabular-nums;">2泊 · 千葉県 · 片道1日</div>
+          </div>
+          <div style="padding: 18px 20px 16px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 16px; color: #1F1B16; font-variant-numeric: tabular-nums; letter-spacing: 0.01em;">2026.09.20 → 09.21</div>
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.18em; color: #9A9085;">サウナが押さえられる4日間</div>
+              <div style="display: flex; gap: 3px;">
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;"><div style="height: 26px; background: #E7DCCB;"></div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #9A9085; font-variant-numeric: tabular-nums;">9/19 出荷</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;"><div style="height: 26px; background: #B4462B;"></div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6E6459; font-variant-numeric: tabular-nums;">9/20 利用</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;"><div style="height: 26px; background: #B4462B;"></div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6E6459; font-variant-numeric: tabular-nums;">9/21 利用</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;"><div style="height: 26px; background: #E7DCCB;"></div><div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #9A9085; font-variant-numeric: tabular-nums;">9/22 返送</div></div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 7px; padding-top: 12px; border-top: 1px solid #EDE6D9;">
+              <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #6E6459; font-variant-numeric: tabular-nums;"><span>基本料金（2泊）</span><span>¥30,000</span></div>
+              <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #6E6459; font-variant-numeric: tabular-nums;"><span>送料（往復）</span><span>¥8,000</span></div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; margin-top: 3px; border-top: 1px solid #EDE6D9; font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums;"><span style="font-size: 12px; color: #6E6459;">合計</span><span style="font-size: 24px; color: #1F1B16; font-weight: 500;">¥38,000</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #DED5C6;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #9A9085;">③ 主ボタン</div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div style="background: #2E4E6B; color: #FFFDF9; font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; font-size: 14.5px; font-weight: 700; padding: 15px 26px; border-radius: 3px; letter-spacing: 0.02em;">この内容で予約する</div>
+          <div style="color: #6E6459; font-size: 14px; padding: 15px 8px; border-bottom: 1px solid #CFC5B4;">別の日を探す</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px 32px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #3F6B4A;">効く</div>
+          <div style="font-size: 12.5px; line-height: 1.85; color: #6E6459; text-wrap: pretty;">明朝の本文が長文に強い。注意事項・キャンセル規定・見積書のような「読ませる文章」が破綻しない。印刷に落としても成立する。</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #A33C2B;">弱い</div>
+          <div style="font-size: 12.5px; line-height: 1.85; color: #6E6459; text-wrap: pretty;">LPの火と水の演出と地続きにしにくい。LPから予約に入った瞬間に世界が切り替わる危険がある（ブリーフ §5 が禁じた失敗）。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- C 計器                                                     -->
+    <!-- ========================================================= -->
+    <div style="width: 464px; background: #DFE2DC; display: flex; flex-direction: column; gap: 0;">
+
+      <div style="padding: 32px 32px 26px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #0E1110;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.26em; color: #E4572E;">DIRECTION C</div>
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; font-weight: 700; font-size: 40px; color: #0E1110; line-height: 1.1;">計器</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; color: #5A615C;">KEIKI</div>
+        </div>
+        <div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; font-size: 13.5px; line-height: 1.9; color: #3E443F; text-wrap: pretty;">台帳と図面。1台のモノが日本を移動する物流を、そのまま画面にする。角丸なし、罫線は見せる、等幅が主役。</div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid #0E1110;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #5A615C;">PALETTE / 配色</div>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #DFE2DC; border: 1px solid #0E1110;"></div><div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 11px; color: #3E443F;">地</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #5A615C;">DFE2DC</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #F4F6F2; border: 1px solid #0E1110;"></div><div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 11px; color: #3E443F;">面</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #5A615C;">F4F6F2</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #0E1110; border: 1px solid #0E1110;"></div><div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 11px; color: #3E443F;">文字</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #5A615C;">0E1110</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #5A615C; border: 1px solid #0E1110;"></div><div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 11px; color: #3E443F;">副文字</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #5A615C;">5A615C</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #E4572E; border: 1px solid #0E1110;"></div><div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 11px; color: #3E443F;">熱</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #5A615C;">E4572E</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #1F6F8B; border: 1px solid #0E1110;"></div><div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 11px; color: #3E443F;">冷</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #5A615C;">1F6F8B</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #1E6E4A; border: 1px solid #0E1110;"></div><div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 11px; color: #3E443F;">空きあり</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #5A615C;">1E6E4A</div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 46px; background: #C22E1F; border: 1px solid #0E1110;"></div><div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 11px; color: #3E443F;">空きなし</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #5A615C;">C22E1F</div></div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 18px; border-bottom: 1px solid #0E1110;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #5A615C;">TYPE / 書体</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; font-weight: 700; font-size: 33px; line-height: 1.32; color: #0E1110;">次の週末を、<br>ととのいに。</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #5A615C;">見出し — BIZ UDPGothic 700</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; font-size: 13.5px; line-height: 1.9; color: #2B302C; text-wrap: pretty;">千葉県までは片道1日。9月20日から2泊お使いいただくあいだ、サウナは9月19日から9月22日まで、あなたのために押さえられます。</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #5A615C;">本文 — BIZ UDPGothic 400</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: baseline; gap: 18px; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; color: #0E1110;">
+            <div style="font-size: 30px; font-weight: 600;">¥38,000</div>
+            <div style="font-size: 14px; color: #5A615C;">2026.09.20 → 09.21</div>
+          </div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #5A615C;">数値 — IBM Plex Mono / tabular-nums</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #0E1110;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #5A615C;">① AI の発話</div>
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 13px; font-weight: 600; color: #E4572E; line-height: 1.9; flex-shrink: 0;">AI</div>
+          <div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; font-size: 14px; line-height: 1.9; color: #1A1F1B; text-wrap: pretty;">9月20日から2泊、千葉県ですね。空いています。内訳を出しますね。</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #0E1110;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #5A615C;">② 確定カード（サーバー計算値）</div>
+        <div style="background: #F4F6F2; border: 1px solid #0E1110; display: flex; flex-direction: column;">
+          <div style="padding: 11px 16px; display: flex; align-items: center; justify-content: space-between; background: #0E1110;">
+            <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; color: #F4F6F2;">AVAILABILITY</div>
+            <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; color: #8B928C;">空き判定</div>
+          </div>
+          <div style="padding: 16px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; gap: 9px; padding-bottom: 12px; border-bottom: 1px solid #C5CBC3;">
+              <div style="width: 9px; height: 9px; background: #1E6E4A;"></div>
+              <div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 13px; font-weight: 700; color: #1E6E4A;">空きあり</div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 16px; color: #0E1110; font-variant-numeric: tabular-nums; letter-spacing: 0.01em;">2026.09.20 → 09.21</div>
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; color: #5A615C; font-variant-numeric: tabular-nums;">2泊 / 千葉県 / 片道1日 / MORZH-001</div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.18em; color: #5A615C;">ITEM_DAYS — 占有4日</div>
+              <div style="display: flex; border: 1px solid #0E1110;">
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid #0E1110;"><div style="height: 24px; background: #C5CBC3;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #3E443F; padding: 4px 0; text-align: center; border-top: 1px solid #0E1110;">9/19 出荷</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid #0E1110;"><div style="height: 24px; background: #E4572E;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #3E443F; padding: 4px 0; text-align: center; border-top: 1px solid #0E1110;">9/20 利用</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid #0E1110;"><div style="height: 24px; background: #E4572E;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #3E443F; padding: 4px 0; text-align: center; border-top: 1px solid #0E1110;">9/21 利用</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column;"><div style="height: 24px; background: #C5CBC3;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #3E443F; padding: 4px 0; text-align: center; border-top: 1px solid #0E1110;">9/22 返送</div></div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px; padding-top: 12px; border-top: 1px solid #0E1110;">
+              <div style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #3E443F; font-variant-numeric: tabular-nums;"><span>BASE  基本料金（2泊）</span><span>¥30,000</span></div>
+              <div style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #3E443F; font-variant-numeric: tabular-nums;"><span>SHIP  送料（往復）</span><span>¥8,000</span></div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; margin-top: 4px; border-top: 1px solid #0E1110; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums;"><span style="font-size: 12px; color: #3E443F;">TOTAL 合計</span><span style="font-size: 24px; color: #0E1110; font-weight: 600;">¥38,000</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #0E1110;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #5A615C;">③ 主ボタン</div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div style="background: #0E1110; color: #F4F6F2; font-family: 'BIZ UDPGothic', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; font-size: 14.5px; font-weight: 700; padding: 15px 24px; display: flex; align-items: center; gap: 12px;">
+            <span>この内容で予約する</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#E4572E" stroke-width="1.6" stroke-linecap="square"><path d="M2 8h11"></path><path d="M9 4l4 4-4 4"></path></svg>
+          </div>
+          <div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; color: #3E443F; font-size: 14px; padding: 14px 20px; border: 1px solid #0E1110;">別の日を探す</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px 32px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #1E6E4A;">効く</div>
+          <div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 12.5px; line-height: 1.85; color: #3E443F; text-wrap: pretty;">片道日数・4日ロック・占有台帳が一級市民になる。ブリーフ §3-② の「見えない制約の可視化」がUIの中心に来る。他社と絶対に似ない。</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #C22E1F;">弱い</div>
+          <div style="font-family: 'BIZ UDPGothic', 'Hiragino Sans', system-ui, sans-serif; font-size: 12.5px; line-height: 1.85; color: #3E443F; text-wrap: pretty;">冷たい。「ととのい」の情緒を語る語彙がない。LPが取扱説明書になる危険。この方向を採るならLPだけ別の熱量が要る。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- D 熾火と台帳（A + C）                                      -->
+    <!-- ========================================================= -->
+    <div style="width: 464px; background: #0C0A09; display: flex; flex-direction: column; gap: 0;">
+
+      <div style="padding: 32px 32px 26px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #2A241D;">
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.26em; color: #D6653A;">DIRECTION D</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.16em; color: #6F6659;">A + C</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <div style="font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-weight: 700; font-size: 40px; color: #EDE6DA; line-height: 1.1;">熾火と台帳</div>
+        </div>
+        <div style="font-size: 13.5px; line-height: 1.9; color: #A2988A; text-wrap: pretty;">世界はAの夜。ただし数字に触れるものはすべてCの計器にする。明朝の見出しと、角丸ゼロの台帳が同居する。</div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 18px; border-bottom: 1px solid #2A241D;">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: baseline; gap: 10px;">
+            <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">PALETTE / 夜</div>
+            <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #4E463C;">既定</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #0C0A09; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">地</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">0C0A09</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #14110E; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">面</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">14110E</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #EDE6DA; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">文字</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">EDE6DA</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #A2988A; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">副文字</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">A2988A</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #D6653A; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">熱</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">D6653A</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #6FA9B4; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">冷</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">6FA9B4</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #8FAE7C; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">空きあり</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">8FAE7C</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #C0574A; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">空きなし</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">C0574A</div></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: baseline; gap: 10px;">
+            <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">PALETTE / 昼</div>
+            <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; color: #4E463C;">同じ色相を明転</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #EFEAE1; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">地</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">EFEAE1</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #FBF8F2; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">面</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">FBF8F2</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #1B1713; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">文字</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">1B1713</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #6B6156; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">副文字</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">6B6156</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #B4502A; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">熱</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">B4502A</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #3C7580; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">冷</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">3C7580</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #4A6B3B; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">空きあり</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">4A6B3B</div></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 40px; background: #A34534; border: 1px solid #2A241D;"></div><div style="font-size: 10.5px; color: #A2988A;">空きなし</div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6F6659;">A34534</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 18px; border-bottom: 1px solid #2A241D;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">TYPE / 書体</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-weight: 700; font-size: 34px; line-height: 1.28; color: #EDE6DA; letter-spacing: 0.01em;">次の週末を、<br>ととのいに。</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #6F6659;">見出し — Shippori Mincho 700（Aから）</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-size: 13.5px; line-height: 1.95; color: #C4BBAC; text-wrap: pretty;">千葉県までは片道1日。9月20日から2泊お使いいただくあいだ、サウナは9月19日から9月22日まで、あなたのために押さえられます。</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #6F6659;">本文 — Zen Kaku Gothic New 400（Aから）</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: baseline; gap: 18px; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; color: #EDE6DA;">
+            <div style="font-size: 30px; font-weight: 600;">¥38,000</div>
+            <div style="font-size: 14px; color: #A2988A;">2026.09.20 → 09.21</div>
+          </div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #6F6659;">数値 — IBM Plex Mono 600（Cから）</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #2A241D;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">① AI の発話</div>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: #D6653A; margin-top: 9px; flex-shrink: 0;"></div>
+          <div style="font-size: 14.5px; line-height: 1.95; color: #DCD3C4; text-wrap: pretty;">9月20日から2泊、千葉県ですね。空いています。内訳を出しますね。</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 16px; border-bottom: 1px solid #2A241D;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">② 確定カード（サーバー計算値）</div>
+
+        <div style="background: #14110E; border: 1px solid #4A3E32; display: flex; flex-direction: column;">
+          <div style="padding: 11px 16px; display: flex; align-items: center; justify-content: space-between; background: #241D17; border-bottom: 1px solid #4A3E32;">
+            <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; color: #EDE6DA;">AVAILABILITY</div>
+            <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; color: #6F6659;">空き判定</div>
+          </div>
+          <div style="padding: 16px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; gap: 9px; padding-bottom: 13px; border-bottom: 1px solid #2E2721;">
+              <div style="width: 9px; height: 9px; background: #8FAE7C;"></div>
+              <div style="font-size: 13px; font-weight: 700; color: #8FAE7C;">空きあり</div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 16px; color: #EDE6DA; font-variant-numeric: tabular-nums; letter-spacing: 0.01em;">2026.09.20 → 09.21</div>
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; color: #6F6659; font-variant-numeric: tabular-nums;">2泊 / 千葉県 / 片道1日 / MORZH-001</div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.18em; color: #6F6659;">ITEM_DAYS — 占有4日</div>
+              <div style="display: flex; border: 1px solid #4A3E32;">
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid #4A3E32;"><div style="height: 24px; background: #33291F;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #8B8072; padding: 4px 0; text-align: center; border-top: 1px solid #4A3E32;">9/19 出荷</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid #4A3E32;"><div style="height: 24px; background: #D6653A;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #A2988A; padding: 4px 0; text-align: center; border-top: 1px solid #4A3E32;">9/20 利用</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid #4A3E32;"><div style="height: 24px; background: #D6653A;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #A2988A; padding: 4px 0; text-align: center; border-top: 1px solid #4A3E32;">9/21 利用</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column;"><div style="height: 24px; background: #33291F;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #8B8072; padding: 4px 0; text-align: center; border-top: 1px solid #4A3E32;">9/22 返送</div></div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px; padding-top: 13px; border-top: 1px solid #2E2721;">
+              <div style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #A2988A; font-variant-numeric: tabular-nums;"><span>BASE  基本料金（2泊）</span><span>¥30,000</span></div>
+              <div style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #A2988A; font-variant-numeric: tabular-nums;"><span>SHIP  送料（往復）</span><span>¥8,000</span></div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 11px; margin-top: 4px; border-top: 1px solid #4A3E32; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums;"><span style="font-size: 12px; color: #A2988A;">TOTAL 合計</span><span style="font-size: 24px; color: #EDE6DA; font-weight: 600;">¥38,000</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9.5px; letter-spacing: 0.18em; color: #6F6659;">同じカード / 昼パレット — 屋外・日中はこちら</div>
+          <div style="background: #FBF8F2; border: 1px solid #C9BFB0; display: flex; flex-direction: column;">
+            <div style="padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; background: #EFEAE1; border-bottom: 1px solid #C9BFB0;">
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; color: #1B1713;">AVAILABILITY</div>
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; color: #6B6156;">空き判定</div>
+            </div>
+            <div style="padding: 14px 16px; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 9px;">
+                <div style="width: 9px; height: 9px; background: #4A6B3B;"></div>
+                <div style="font-size: 13px; font-weight: 700; color: #4A6B3B;">空きあり</div>
+              </div>
+              <div style="display: flex; border: 1px solid #1B1713;">
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid #1B1713;"><div style="height: 20px; background: #DDD3C4;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6B6156; padding: 3px 0; text-align: center; border-top: 1px solid #1B1713;">9/19</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid #1B1713;"><div style="height: 20px; background: #B4502A;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6B6156; padding: 3px 0; text-align: center; border-top: 1px solid #1B1713;">9/20</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid #1B1713;"><div style="height: 20px; background: #B4502A;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6B6156; padding: 3px 0; text-align: center; border-top: 1px solid #1B1713;">9/21</div></div>
+                <div style="flex: 1; display: flex; flex-direction: column;"><div style="height: 20px; background: #DDD3C4;"></div><div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px; color: #6B6156; padding: 3px 0; text-align: center; border-top: 1px solid #1B1713;">9/22</div></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 11px; border-top: 1px solid #C9BFB0; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums;"><span style="font-size: 12px; color: #6B6156;">TOTAL 合計</span><span style="font-size: 24px; color: #1B1713; font-weight: 600;">¥38,000</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #2A241D;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #6F6659;">③ 主ボタン</div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div style="background: #D6653A; color: #150D08; font-size: 14.5px; font-weight: 700; padding: 15px 24px; display: flex; align-items: center; gap: 12px; letter-spacing: 0.02em;">
+            <span>この内容で予約する</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#150D08" stroke-width="1.6" stroke-linecap="square"><path d="M2 8h11"></path><path d="M9 4l4 4-4 4"></path></svg>
+          </div>
+          <div style="color: #C4BBAC; font-size: 14px; padding: 14px 20px; border: 1px solid #4A3E32;">別の日を探す</div>
+        </div>
+      </div>
+
+      <div style="padding: 26px 32px 32px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #8FAE7C;">効く</div>
+          <div style="font-size: 12.5px; line-height: 1.85; color: #A2988A; text-wrap: pretty;">LPからそのまま入れて世界が切れない。数値は計器の精度で読める。屋外の日中は昼パレットに落とせる。3案がそれぞれ抱えていた欠点を、個別に潰している。</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; color: #C0574A;">弱い</div>
+          <div style="font-size: 12.5px; line-height: 1.85; color: #A2988A; text-wrap: pretty;">統合案は中庸に落ちる危険が常にある。CがCなのは全体が台帳だからで、明朝の見出しと同居した瞬間に「少し硬派な普通の予約サイト」になりうる。精度に全部かかっていて、雑にやると4案で一番つまらない。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

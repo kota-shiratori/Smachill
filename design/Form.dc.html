@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap">
+  <style>
+    body { margin: 0; }
+    .maru { font-family: 'Zen Maru Gothic', 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif; }
+    .marker { background: linear-gradient(transparent 58%, #FFDE7A 58%, #FFDE7A 95%, transparent 95%); }
+    .num { font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; }
+    .pop { box-shadow: 0 5px 0 0 #C13A08; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; height: 1024px; background: #FFF6EC; font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; color: #241F1B; display: flex; flex-direction: column; overflow: hidden;">
+
+  <!-- ヘッダ -->
+  <div style="height: 64px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 26px;">
+    <div style="display: flex; align-items: center; gap: 11px;">
+      <div style="position: relative; width: 13px; height: 13px;">
+        <div style="position: absolute; inset: 0; border-radius: 999px; background: #FF5A1F;"></div>
+        <div style="position: absolute; inset: 3px; border-radius: 999px; background: #FFC93C;"></div>
+      </div>
+      <div class="maru" style="font-weight: 900; font-size: 19px;">Smachill</div>
+      <div style="background: #FFE6D8; color: #D8410B; font-size: 10.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">テントサウナ宅配</div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 18px;">
+      <div style="font-size: 13px; font-weight: 500; color: #6E655D;">料金</div>
+      <div style="font-size: 13px; font-weight: 500; color: #6E655D;">流れ</div>
+    </div>
+  </div>
+
+  <div style="flex: 1; display: flex; gap: 0; min-height: 0; padding: 0 20px 20px;">
+
+    <!-- ============ 左: フォーム（あなたが入れたこと） ============ -->
+    <div style="flex: 1; display: flex; flex-direction: column; padding: 6px 34px 6px 14px; min-width: 0;">
+
+      <!-- 会話のたたみ込み -->
+      <div style="background: #FFF; border-radius: 999px; padding: 9px 9px 9px 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; box-shadow: 0 4px 16px -8px rgba(120, 80, 50, 0.35);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 26px; height: 26px; border-radius: 999px; background: #FFE6D8; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><div style="width: 8px; height: 8px; border-radius: 999px; background: #FF5A1F;"></div></div>
+          <div class="num" style="font-size: 12.5px; color: #6E655D;">09.20 → 09.21 / 千葉県 / 2泊 / チェア × 2</div>
+        </div>
+        <div style="background: #FFF6EC; color: #6E655D; font-size: 12.5px; font-weight: 700; padding: 8px 16px; border-radius: 999px; display: flex; align-items: center; gap: 7px;">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#6E655D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 8h-10"></path><path d="M7 4.5L3.5 8 7 11.5"></path></svg>
+          <span>会話に戻る</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px;">
+        <div class="maru" style="font-weight: 900; font-size: 40px; line-height: 1.28;">届け先を<span class="marker">教えて</span>ください。</div>
+        <div style="font-size: 14.5px; line-height: 1.9; color: #6E655D;">ここは会話より、打ったほうが速いので。</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+
+        <div style="display: flex; gap: 18px;">
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+            <div class="maru" style="font-size: 13px; font-weight: 700; color: #6E655D;">お名前</div>
+            <div style="background: #FFF; border-radius: 16px; padding: 15px 18px; font-size: 15px; box-shadow: 0 3px 12px -7px rgba(120,80,50,0.5);">山田 太郎</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+            <div class="maru" style="font-size: 13px; font-weight: 700; color: #6E655D;">メールアドレス</div>
+            <div class="num" style="background: #FFF; border-radius: 16px; padding: 15px 18px; font-size: 14.5px; box-shadow: 0 3px 12px -7px rgba(120,80,50,0.5);">taro@example.com</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 18px; align-items: flex-start;">
+          <div style="width: 210px; display: flex; flex-direction: column; gap: 8px;">
+            <div class="maru" style="font-size: 13px; font-weight: 700; color: #6E655D;">郵便番号</div>
+            <div class="num" style="background: #FFF; border-radius: 16px; padding: 15px 18px; font-size: 15px; box-shadow: 0 3px 12px -7px rgba(120,80,50,0.5);">270-0023</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div class="maru" style="font-size: 13px; font-weight: 700; color: #6E655D;">都道府県</div>
+              <div style="background: #D5F2F7; color: #0B8CA0; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 999px;">会話で決定済み</div>
+            </div>
+            <div style="background: #D5F2F7; border-radius: 16px; padding: 15px 18px; display: flex; align-items: center; justify-content: space-between;">
+              <div class="maru" style="font-size: 15px; font-weight: 700; color: #0B6E7E;">千葉県</div>
+              <div class="num" style="font-size: 12px; color: #3F6D77;">片道1日 / 送料 ¥8,000</div>
+            </div>
+            <div style="font-size: 11.5px; line-height: 1.75; color: #5E9AA6;">変えると送料と占有日数が変わるので、金額を計算し直します。</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="maru" style="font-size: 13px; font-weight: 700; color: #D8410B;">市区町村・番地・建物名</div>
+          <div style="background: #FFF; border: 2px solid #FF5A1F; border-radius: 16px; padding: 14px 18px; display: flex; align-items: center; gap: 2px; box-shadow: 0 0 0 5px rgba(255, 90, 31, 0.13);">
+            <div style="font-size: 15px; color: #A79C92;">松戸市○○ 1-2-3</div>
+            <div style="width: 2px; height: 20px; background: #FF5A1F; border-radius: 2px;"></div>
+          </div>
+          <div style="font-size: 11.5px; line-height: 1.75; color: #A79C92;">サウナ本体は大型荷物です。車が入れる場所か、受け取れる時間帯があれば備考にお書きください。</div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="maru" style="font-size: 13px; font-weight: 700; color: #6E655D;">備考 <span style="color: #A79C92; font-weight: 500;">任意</span></div>
+          <div style="background: #FFF; border-radius: 16px; padding: 15px 18px; font-size: 15px; color: #A79C92; min-height: 56px; box-shadow: 0 3px 12px -7px rgba(120,80,50,0.5);">受け取りの希望時間、設営場所のことなど</div>
+        </div>
+      </div>
+
+      <div style="flex: 1;"></div>
+
+      <div style="display: flex; align-items: center; gap: 20px; padding-top: 20px;">
+        <div class="maru pop" style="background: #FF5A1F; color: #FFF; font-size: 17px; font-weight: 700; padding: 18px 32px; border-radius: 999px; display: flex; align-items: center; gap: 12px;">
+          <span class="num" style="font-weight: 700;">¥44,000</span>
+          <span>を決済する</span>
+          <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#FFF" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h10"></path><path d="M9 4.5L12.5 8 9 11.5"></path></svg>
+        </div>
+        <div style="font-size: 12.5px; line-height: 1.8; color: #A79C92; max-width: 22em;">決済画面に移ります。カード情報はこのサイトを通りません。</div>
+      </div>
+    </div>
+
+    <!-- ============ 右: 台帳（変わらずそこにある） ============ -->
+    <div style="width: 428px; flex-shrink: 0; background: #FFF; border-radius: 26px; display: flex; flex-direction: column; box-shadow: 0 10px 34px -14px rgba(120, 80, 50, 0.35); overflow: hidden;">
+
+      <div style="background: #D5F2F7; padding: 18px 24px 16px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <div class="maru" style="font-size: 13.5px; font-weight: 700; color: #0B6E7E;">仮押さえ中</div>
+          <div class="maru num" style="font-size: 26px; font-weight: 900; color: #0B6E7E;">19:04</div>
+        </div>
+        <div style="height: 8px; background: rgba(255,255,255,0.7); border-radius: 999px; display: flex; overflow: hidden;">
+          <div style="width: 63%; background: #12B5CE; border-radius: 999px;"></div>
+        </div>
+        <div style="font-size: 11.5px; line-height: 1.75; color: #3F6D77;">入力中も時間は進みます。切れても、同じ条件ですぐ取り直せます。</div>
+      </div>
+
+      <div style="padding: 20px 24px 18px; display: flex; flex-direction: column; gap: 12px; border-bottom: 2px solid #F7EDE2;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: #DAF5E7; color: #1D8B50; font-size: 13px; font-weight: 700; padding: 6px 15px; border-radius: 999px;">空きあり</div>
+          <div style="background: #FFF6EC; color: #A79C92; font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 999px;">MORZH-001</div>
+        </div>
+        <div class="maru num" style="font-size: 24px; font-weight: 900;">2026.09.20 → 09.21</div>
+        <div class="num" style="font-size: 12px; color: #A79C92;">2泊 / 千葉県 / 片道1日</div>
+      </div>
+
+      <div style="padding: 18px 24px; display: flex; flex-direction: column; gap: 11px; border-bottom: 2px solid #F7EDE2;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div class="maru" style="font-size: 13.5px; font-weight: 700;">実機が塞がる日</div>
+          <div style="background: #FFE6D8; color: #D8410B; font-size: 11.5px; font-weight: 700; padding: 4px 11px; border-radius: 999px;">4日</div>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 5px; align-items: center;"><div style="width: 100%; height: 26px; border-radius: 9px; background: #F0E4D6;"></div><div class="num" style="font-size: 10.5px; color: #A79C92;">9/19</div></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 5px; align-items: center;"><div style="width: 100%; height: 26px; border-radius: 9px; background: #FF5A1F;"></div><div class="num" style="font-size: 10.5px; font-weight: 600;">9/20</div></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 5px; align-items: center;"><div style="width: 100%; height: 26px; border-radius: 9px; background: #FF5A1F;"></div><div class="num" style="font-size: 10.5px; font-weight: 600;">9/21</div></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 5px; align-items: center;"><div style="width: 100%; height: 26px; border-radius: 9px; background: #F0E4D6;"></div><div class="num" style="font-size: 10.5px; color: #A79C92;">9/22</div></div>
+        </div>
+      </div>
+
+      <div style="padding: 18px 24px; display: flex; flex-direction: column; gap: 11px; flex: 1;">
+        <div class="maru" style="font-size: 13.5px; font-weight: 700; margin-bottom: 2px;">確定見積</div>
+        <div class="num" style="display: flex; justify-content: space-between; font-size: 13px; color: #6E655D;"><span>基本料金（2泊）</span><span style="color: #241F1B; font-weight: 600;">¥30,000</span></div>
+        <div class="num" style="display: flex; justify-content: space-between; font-size: 13px; color: #6E655D;"><span>チェア × 2</span><span style="color: #241F1B; font-weight: 600;">¥4,000</span></div>
+        <div class="num" style="display: flex; justify-content: space-between; font-size: 13px; color: #6E655D;"><span>送料 + 加算</span><span style="color: #241F1B; font-weight: 600;">¥10,000</span></div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 14px; margin-top: 4px; border-top: 2px solid #F7EDE2;">
+          <span class="maru" style="font-size: 15px; font-weight: 700;">合計</span>
+          <span class="maru num" style="font-size: 40px; font-weight: 900; letter-spacing: -0.02em;">¥44,000</span>
+        </div>
+      </div>
+
+      <div style="padding: 0 24px 22px;">
+        <div style="background: #FFF6EC; border-radius: 18px; padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A79C92" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><rect x="4" y="10" width="16" height="10" rx="2.5"></rect><path d="M8 10V7a4 4 0 018 0v3"></path></svg>
+          <div style="font-size: 12px; line-height: 1.8; color: #6E655D;">この内訳は仮押さえの時点で固定されています。<b style="color: #241F1B;">左の入力で金額が動くことはありません。</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

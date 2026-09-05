@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap">
+  <style>
+    body { margin: 0; }
+    .maru { font-family: 'Zen Maru Gothic', 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif; }
+    .marker { background: linear-gradient(transparent 56%, #FFDE7A 56%, #FFDE7A 94%, transparent 94%); }
+    .num { font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; }
+    .code { font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; }
+    .row { display: grid; grid-template-columns: 150px 104px 1fr 300px; gap: 16px; padding: 15px 18px; align-items: start; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #FFF6EC; font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; color: #241F1B; padding: 42px 48px 52px; display: flex; flex-direction: column; gap: 38px;">
+
+  <!-- ヘッダ -->
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="background: #12B5CE; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; padding: 6px 12px; border-radius: 999px;">MOTION</div>
+        <div style="background: #FFF; border: 2px solid #FFD9C4; color: #D8410B; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">方向E — 明るい地での演出</div>
+      </div>
+      <div class="maru" style="font-weight: 900; font-size: 42px; line-height: 1.26;">明るい地では、<span class="marker">光を足せない</span>。</div>
+      <div style="font-size: 14px; line-height: 1.95; color: #6E655D; max-width: 48em;">D（<span class="code">#0C0A09</span>）の演出は「暗闇に光を足す」前提だった。E（<span class="code">#FFF6EC</span>）には足す余地がない。<b style="color:#241F1B;">代わりに使えるのは「影を落とす」と「歪ませる」の2つ。</b>10個のうち何がそのまま動き、何が動かないかを実物で確認した記録。</div>
+    </div>
+    <div style="width: 320px; flex-shrink: 0; background: #241F1B; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 11px;">
+      <div class="num" style="font-size: 10px; letter-spacing: 0.2em; color: #9A9086;">SOURCE</div>
+      <div class="code" style="font-size: 12px; line-height: 1.8; color: #E8E0D6;">~/dev/canvas-ui/src/<br>components/canvasui/*.tsx</div>
+      <div style="height: 1px; background: #3A342E;"></div>
+      <div style="font-size: 12.5px; line-height: 1.85; color: #C4B8AA;">10個すべてが <b style="color:#FFC93C;">WebGL2 + 2D フォールバック</b>の二重実装。10個すべてが <span class="code" style="font-size:11.5px;">prefers-reduced-motion</span> に対応済み。ブリーフ §6 の要求は満たされている。</div>
+    </div>
+  </div>
+
+  <!-- ============ 判定表 ============ -->
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div class="maru" style="font-size: 19px; font-weight: 700;">01 — 10個の判定</div>
+      <div style="flex: 1; height: 2px; background: #F0E4D6; border-radius: 2px;"></div>
+      <div style="display: flex; gap: 7px;">
+        <div style="background: #DAF5E7; color: #1D8B50; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 999px;">そのまま 3</div>
+        <div style="background: #D5F2F7; color: #0B8CA0; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 999px;">地に依存しない 5</div>
+        <div style="background: #FFE6D8; color: #D8410B; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 999px;">要調整 1</div>
+        <div style="background: #FFE3E8; color: #C81F3D; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 999px;">調整不能 1</div>
+      </div>
+    </div>
+
+    <div style="background: #FFF; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 26px -12px rgba(120, 80, 50, 0.3);">
+      <div class="row" style="background: #241F1B; padding-top: 12px; padding-bottom: 12px;">
+        <div class="num" style="font-size: 10.5px; letter-spacing: 0.16em; color: #FFF6EC; font-weight: 600;">COMPONENT</div>
+        <div class="num" style="font-size: 10.5px; letter-spacing: 0.16em; color: #FFF6EC; font-weight: 600;">判定</div>
+        <div class="num" style="font-size: 10.5px; letter-spacing: 0.16em; color: #FFF6EC; font-weight: 600;">根拠</div>
+        <div class="num" style="font-size: 10.5px; letter-spacing: 0.16em; color: #FFF6EC; font-weight: 600;">明るい地での設定</div>
+      </div>
+
+      <!-- Clouds -->
+      <div class="row" style="background: #FFF6EC;">
+        <div><div class="maru" style="font-size: 15px; font-weight: 700;">Clouds</div><div style="font-size: 11.5px; color: #A79C92; margin-top: 3px;">蒸気</div></div>
+        <div><div style="background: #DAF5E7; color: #1D8B50; font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; display: inline-block;">そのまま</div></div>
+        <div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><span class="code">color</span> が <span class="code">"auto"</span> を受け付ける。<span class="code">:416</span> で <span class="code">getComputedStyle(el).backgroundColor</span> を読み、<span class="code">:740</span> で <span class="code">data-theme</span> を、<span class="code">:742</span> で <span class="code">prefers-color-scheme</span> を監視している。<b style="color:#241F1B;">明るい地を想定して作られている。</b></div>
+        <div class="code" style="font-size: 11.5px; line-height: 1.9; background: #FFF; border-radius: 12px; padding: 11px 13px; color: #6E655D;">color: "auto"<br><b style="color:#1D8B50;">shadow: 0.5</b> ← 光ではなく影<br>shadowOffsetY: 12<br>shadowSoftness: 0.7<br>opacity: 0.55</div>
+      </div>
+
+      <!-- ParticleScroll -->
+      <div class="row">
+        <div><div class="maru" style="font-size: 15px; font-weight: 700;">ParticleScroll</div><div style="font-size: 11.5px; color: #A79C92; margin-top: 3px;">砂になって再結像</div></div>
+        <div><div style="background: #DAF5E7; color: #1D8B50; font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; display: inline-block;">そのまま</div></div>
+        <div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><span class="code">:372</span> で地の色を読み <span class="code">uBg</span> uniform に渡す。合成は <span class="code">:553</span> で <span class="code">blendFuncSeparate(SRC_ALPHA, ONE_MINUS_SRC_ALPHA, …)</span> ＝<b style="color:#241F1B;">通常のアルファ合成。加算ではない。</b></div>
+        <div class="code" style="font-size: 11.5px; line-height: 1.9; background: #FFF; border-radius: 12px; padding: 11px 13px; color: #6E655D;">自動で地を読む<br><b style="color:#1D8B50;">fade: 0.5</b> ← 上げる<br>density: 3<br>gravity: 0.3</div>
+      </div>
+
+      <!-- ParticleReveal -->
+      <div class="row" style="background: #FFF6EC;">
+        <div><div class="maru" style="font-size: 15px; font-weight: 700;">ParticleReveal</div><div style="font-size: 11.5px; color: #A79C92; margin-top: 3px;">なぞった所だけ戻る</div></div>
+        <div><div style="background: #DAF5E7; color: #1D8B50; font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; display: inline-block;">1行で済む</div></div>
+        <div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><span class="code">background?: string</span> を prop で受ける。地の色との距離（<span class="code">threshold</span>）で「UIの画素」と「空白」を判別している。<b style="color:#C81F3D;">渡し忘れると誤判定する</b>——黒のままだとクリームの地を全部UI扱いして砂にする。</div>
+        <div class="code" style="font-size: 11.5px; line-height: 1.9; background: #FFF; border-radius: 12px; padding: 11px 13px; color: #6E655D;"><b style="color:#C81F3D;">background: "#FFF6EC"</b> 必須<br>threshold: 0.12<br>fade: 0.6</div>
+      </div>
+
+      <!-- Liquid -->
+      <div class="row">
+        <div><div class="maru" style="font-size: 15px; font-weight: 700;">Liquid</div><div style="font-size: 11.5px; color: #A79C92; margin-top: 3px;">水面の歪み</div></div>
+        <div><div style="background: #D5F2F7; color: #0B8CA0; font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; display: inline-block;">地に依存しない</div></div>
+        <div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><span class="code">distortion</span> は背後を歪ませるだけなので地の色と無関係。ただし <span class="code">blend</span> と <span class="code">intensity</span> は流体の色を上に乗せるので、クリームだと濁る。<b style="color:#241F1B;">歪みだけ使い、色は乗せない。</b></div>
+        <div class="code" style="font-size: 11.5px; line-height: 1.9; background: #FFF; border-radius: 12px; padding: 11px 13px; color: #6E655D;"><b style="color:#0B8CA0;">distortion: 0.8</b><br>blend: 0.15 ← 下げる<br>intensity: 0.2 ← 下げる<br>color: [0.07,0.71,0.81]<br>rainbow: false</div>
+      </div>
+
+      <!-- Frost -->
+      <div class="row" style="background: #FFF6EC;">
+        <div><div class="maru" style="font-size: 15px; font-weight: 700;">Frost</div><div style="font-size: 11.5px; color: #A79C92; margin-top: 3px;">曇りガラスが溶ける</div></div>
+        <div><div style="background: #D5F2F7; color: #0B8CA0; font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; display: inline-block;">色替えが要る</div></div>
+        <div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><span class="code">refraction</span> / <span class="code">ior</span> / <span class="code">meltRadius</span> は屈折とマスクなので地に依存しない。ただし霜の既定色は白寄り＝<b style="color:#C81F3D;">クリームの上では見えない</b>。<span class="code">tintThin</span> / <span class="code">tintThick</span> を冷側に振り、<span class="code">brightness</span> を1未満にして<b style="color:#241F1B;">地より暗い霜</b>にする。</div>
+        <div class="code" style="font-size: 11.5px; line-height: 1.9; background: #FFF; border-radius: 12px; padding: 11px 13px; color: #6E655D;">tintThin: [0.84,0.95,0.97]<br>tintThick: [0.07,0.71,0.81]<br>tintStrength: 0.7<br><b style="color:#0B8CA0;">brightness: 0.94</b> ← 1未満<br>ior: 1.31 / meltRadius: 0.3</div>
+      </div>
+
+      <!-- Droplets -->
+      <div class="row">
+        <div><div class="maru" style="font-size: 15px; font-weight: 700;">Droplets</div><div style="font-size: 11.5px; color: #A79C92; margin-top: 3px;">雨粒</div></div>
+        <div><div style="background: #D5F2F7; color: #0B8CA0; font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; display: inline-block;">地に依存しない</div></div>
+        <div style="font-size: 13px; line-height: 1.85; color: #3A342E;">屈折とぼかし。さらに <span class="code">vignette</span> が<b style="color:#241F1B;">縁を暗くする</b>——明るい地でこそ効く数少ない既製パラメータ。天候の節（LP 06）で使える。</div>
+        <div class="code" style="font-size: 11.5px; line-height: 1.9; background: #FFF; border-radius: 12px; padding: 11px 13px; color: #6E655D;">refraction: 0.5<br><b style="color:#0B8CA0;">vignette: 0.35</b> ← 影で深度<br>blur: 0.3<br>tint: [0.07,0.71,0.81]<br>tintStrength: 0.15</div>
+      </div>
+
+      <!-- Glitch -->
+      <div class="row" style="background: #FFF6EC;">
+        <div><div class="maru" style="font-size: 15px; font-weight: 700;">Glitch</div><div style="font-size: 11.5px; color: #A79C92; margin-top: 3px;">分解・ずれ</div></div>
+        <div><div style="background: #D5F2F7; color: #0B8CA0; font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; display: inline-block;">むしろ有利</div></div>
+        <div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><span class="code">rgbShift</span> はチャンネルを横にずらすだけ。<b style="color:#241F1B;">白地のほうがシアン／マゼンタの縁がはっきり出る</b>ので、黒地より読める。ただし E の穏やかなトーンに合うかは別問題——使う場所がない可能性が高い。</div>
+        <div class="code" style="font-size: 11.5px; line-height: 1.9; background: #FFF; border-radius: 12px; padding: 11px 13px; color: #6E655D;">rgbShift: 3<br>intensity: 0.4<br>interval: 6 / duration: 0.15<br><span style="color:#C4B8AA;">— 用途未定</span></div>
+      </div>
+
+      <!-- Grid -->
+      <div class="row">
+        <div><div class="maru" style="font-size: 15px; font-weight: 700;">Grid</div><div style="font-size: 11.5px; color: #A79C92; margin-top: 3px;">面が波打つ</div></div>
+        <div><div style="background: #D5F2F7; color: #0B8CA0; font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; display: inline-block;">地に依存しない</div></div>
+        <div style="font-size: 13px; line-height: 1.85; color: #3A342E;">立体タイルのジオメトリ。<span class="code">shading</span> が<b style="color:#241F1B;">側面を暗くする</b>ので明るい地でも立体が読める。<span class="code">cornerRadius</span> があるのが E と相性がいい——タイル自体を角丸にできる。</div>
+        <div class="code" style="font-size: 11.5px; line-height: 1.9; background: #FFF; border-radius: 12px; padding: 11px 13px; color: #6E655D;"><b style="color:#0B8CA0;">cornerRadius: 14</b> ← Eに合わせる<br>shading: 0.8 ← 影で立体<br>tint: [1,0.35,0.12]<br>tintStrength: 0.4<br>idleRipples: 4</div>
+      </div>
+
+      <!-- Blaze -->
+      <div class="row" style="background: #FFF0E4;">
+        <div><div class="maru" style="font-size: 15px; font-weight: 700; color: #D8410B;">Blaze</div><div style="font-size: 11.5px; color: #A79C92; margin-top: 3px;">炎・火の粉</div></div>
+        <div><div style="background: #FF5A1F; color: #FFF; font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; display: inline-block;">要調整</div></div>
+        <div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><b style="color:#241F1B;">火の粉は出る。glow と smoke は構造的に死ぬ。</b>詳細は次の節。</div>
+        <div class="code" style="font-size: 11.5px; line-height: 1.9; background: #FFF; border-radius: 12px; padding: 11px 13px; color: #6E655D;"><b style="color:#C81F3D;">glow: 0</b> ← 効かない<br><b style="color:#C81F3D;">smoke: 0</b> ← 効かない<br><b style="color:#D8410B;">distortion: 0.9</b> ← これが熱<br>sparks: 0.8 / sparkDensity: 2<br>sparkColor: [1,0.35,0.12]</div>
+      </div>
+
+      <!-- Bubble -->
+      <div class="row">
+        <div><div class="maru" style="font-size: 15px; font-weight: 700; color: #C81F3D;">Bubble</div><div style="font-size: 11.5px; color: #A79C92; margin-top: 3px;">泡</div></div>
+        <div><div style="background: #F2415F; color: #FFF; font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; display: inline-block;">調整不能</div></div>
+        <div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><b style="color:#C81F3D;">オプションが1つもない。</b>props は <span class="code">children</span> / <span class="code">className</span> / <span class="code">style</span> だけ。他の9個が10〜25個のノブを持つのに対し、これだけ固定。明るい地で読めなかった場合、<b style="color:#241F1B;">フォークする以外に直す手段がない。</b></div>
+        <div class="code" style="font-size: 11.5px; line-height: 1.9; background: #FFE3E8; border-radius: 12px; padding: 11px 13px; color: #C81F3D;">ノブなし<br><b>→ 実際に置いて目視するまで<br>　 可否が分からない</b><br><span style="color:#A79C92;">[要検証]</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Blaze 詳細 ============ -->
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div class="maru" style="font-size: 19px; font-weight: 700;">02 — なぜ Blaze の glow と smoke は死ぬのか</div>
+      <div style="flex: 1; height: 2px; background: #F0E4D6; border-radius: 2px;"></div>
+      <div class="code" style="font-size: 12px; color: #A79C92;">Blaze.tsx</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch;">
+
+      <div style="background: #241F1B; border-radius: 22px; padding: 24px 26px; display: flex; flex-direction: column; gap: 15px;">
+        <div class="num" style="font-size: 10px; letter-spacing: 0.2em; color: #9A9086;">Blaze.tsx:268 — 火のパス</div>
+        <div class="code" style="font-size: 12.5px; line-height: 1.85; color: #FFC93C; background: #17130F; border-radius: 12px; padding: 14px 16px;">outColor = vec4(fire,<br>&nbsp;&nbsp;max(fire.r, max(fire.g, fire.b)));</div>
+        <div style="font-size: 13px; line-height: 1.9; color: #E8E0D6;"><b style="color:#FFC93C;">アルファを色の明るさから作っている。</b>明るい所は不透明、暗い所は透明になる。加算合成ではないので「暗闇に光を足す」方式ではない——<b style="color:#FFF;">だから明るい地でも火の粉そのものは不透明なオレンジの粒として乗る。</b></div>
+        <div style="height: 1px; background: #3A342E;"></div>
+        <div class="num" style="font-size: 10px; letter-spacing: 0.2em; color: #9A9086;">Blaze.tsx:265 — glow</div>
+        <div class="code" style="font-size: 12.5px; line-height: 1.85; color: #E08968; background: #17130F; border-radius: 12px; padding: 14px 16px;">vec3 glow = uSmokeColor * <b style="color:#F2415F;">0.05</b><br>&nbsp;&nbsp;* uGlow * pow(1.0 - fy, 2.0);</div>
+        <div style="font-size: 13px; line-height: 1.9; color: #E8E0D6;">係数が <b style="color:#F2415F;">0.05</b>。既定の <span class="code" style="color:#FFC93C;">glow: 1.5</span> でも実効アルファは約 <span class="num" style="color:#FFC93C;">0.075</span>。黒地なら燠火のもやとして見えるが、<span class="code" style="color:#FFC93C;">#FFF6EC</span> の上では見えない。</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div style="background: #FFE3E8; border-radius: 22px; padding: 22px 24px; display: flex; flex-direction: column; gap: 11px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 24px; height: 24px; border-radius: 999px; background: #F2415F; color: #FFF; font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">!</div>
+            <div class="maru" style="font-size: 15px; font-weight: 700; color: #C81F3D;">smoke は原理的に直せない</div>
+          </div>
+          <div style="font-size: 13px; line-height: 1.9; color: #8A2436;">明るい地で煙を見せるには<b style="color:#241F1B;">地より暗い煙</b>を描く必要がある。しかしアルファが明るさから作られている以上、<b style="color:#241F1B;">暗い色を出すとアルファが下がって消える。</b>パラメータをどういじっても出せない。shader をフォークして <span class="code">1.0 - luminance</span> をアルファにするなら可能。</div>
+        </div>
+
+        <div style="background: #FFF; border-radius: 22px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+          <div class="maru" style="font-size: 15px; font-weight: 700;">合成パスは明るい地でも正しく抜ける</div>
+          <div class="code" style="font-size: 11.5px; line-height: 1.8; background: #FFF6EC; border-radius: 12px; padding: 13px 15px; color: #6E655D;">// Blaze.tsx:343<br>float luma = dot(content.rgb,<br>&nbsp;&nbsp;vec3(0.299, 0.587, 0.114)) * content.a;<br>vec3 col = content.rgb * content.a<br>&nbsp;&nbsp;* (1.0 - fire.a * luma) + fire.rgb;</div>
+          <div style="font-size: 13px; line-height: 1.9; color: #3A342E;">HTML の内容を<b style="color:#241F1B;">炎のアルファ × 自身の輝度ぶん削ってから</b>炎色を足している。クリーム地は <span class="code">luma ≈ 0.95</span> なので、炎の濃い所は地をほぼ打ち抜いてオレンジになる。<b style="color:#1D8B50;">ここは明るい地のほうがきれいに抜ける。</b></div>
+        </div>
+
+        <div style="background: #FFF0C4; border-radius: 22px; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px;">
+          <div class="maru" style="font-size: 15px; font-weight: 700; color: #241F1B;">結論</div>
+          <div style="font-size: 13.5px; line-height: 1.9; color: #6B4E00;"><b style="color:#241F1B;">明るい地で火を見せるのは、光ではなく歪み。</b>日中の焚き火が、炎そのものより陽炎で分かるのと同じ。<span class="code">distortion</span> は背後を歪ませるだけなので地の色と無関係に効く。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 原則 ============ -->
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div class="maru" style="font-size: 19px; font-weight: 700;">03 — 明るい地の3原則</div>
+      <div style="flex: 1; height: 2px; background: #F0E4D6; border-radius: 2px;"></div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px;">
+      <div style="background: #FFF; border-radius: 22px; padding: 24px 26px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+        <div class="maru num" style="width: 40px; height: 40px; border-radius: 999px; background: #FF5A1F; color: #FFF; font-size: 17px; font-weight: 900; display: flex; align-items: center; justify-content: center;">01</div>
+        <div class="maru" style="font-size: 17px; font-weight: 700;">光ではなく影と歪み</div>
+        <div style="font-size: 13px; line-height: 1.9; color: #6E655D;">暗い地の深度は「光を足す」で作れた。明るい地では飽和していて足せない。使えるのは <span class="code">shadow</span>（Clouds）<span class="code">vignette</span>（Droplets）<span class="code">shading</span>（Grid）<span class="code">distortion</span>（Blaze / Liquid）。<b style="color:#241F1B;">既製のノブに全部揃っている。</b></div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 22px; padding: 24px 26px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+        <div class="maru num" style="width: 40px; height: 40px; border-radius: 999px; background: #FFC93C; color: #241F1B; font-size: 17px; font-weight: 900; display: flex; align-items: center; justify-content: center;">02</div>
+        <div class="maru" style="font-size: 17px; font-weight: 700;">少なくて濃い</div>
+        <div style="font-size: 13px; line-height: 1.9; color: #6E655D;">黒地では不透明度5%の動きが見えた。クリームでは5%は見えない。だから<b style="color:#241F1B;">「多くて薄い」ではなく「少なくて濃い」</b>にしないと成立しない。逆に濃いものを多く置くと散らかる。<b style="color:#241F1B;">節あたり1つに絞る。</b></div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 22px; padding: 24px 26px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+        <div class="maru num" style="width: 40px; height: 40px; border-radius: 999px; background: #12B5CE; color: #FFF; font-size: 17px; font-weight: 900; display: flex; align-items: center; justify-content: center;">03</div>
+        <div class="maru" style="font-size: 17px; font-weight: 700;">重い演出は00〜03だけ</div>
+        <div style="font-size: 13px; line-height: 1.9; color: #6E655D;">04物流 / 05料金 / 06流れ は白いカードが並ぶ面。<b style="color:#241F1B;">日付と金額の上でノイズを立てない</b>（ブリーフ §6）。E ではここを CSS の動きだけで持たせる。WebGL は上の4節に限定。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CSS の動き ============ -->
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div class="maru" style="font-size: 19px; font-weight: 700;">04 — WebGL を使わない、E 固有の動き</div>
+      <div style="flex: 1; height: 2px; background: #F0E4D6; border-radius: 2px;"></div>
+      <div style="font-size: 12.5px; color: #A79C92;">ポップの手触りはほぼこちら側で決まる</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+
+      <div style="background: #FFF; border-radius: 22px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+        <div class="maru" style="font-size: 15px; font-weight: 700;">ピルの押し込み</div>
+        <div style="display: flex; gap: 12px; align-items: flex-end;">
+          <div class="maru" style="background: #FF5A1F; color: #FFF; font-size: 12.5px; font-weight: 700; padding: 10px 16px; border-radius: 999px; box-shadow: 0 5px 0 0 #C13A08;">通常</div>
+          <div class="maru" style="background: #FF5A1F; color: #FFF; font-size: 12.5px; font-weight: 700; padding: 10px 16px; border-radius: 999px; box-shadow: 0 2px 0 0 #C13A08; transform: translateY(3px);">押下</div>
+        </div>
+        <div class="code" style="font-size: 11px; line-height: 1.8; background: #FFF6EC; border-radius: 10px; padding: 10px 12px; color: #6E655D;">:active {<br>&nbsp;&nbsp;transform: translateY(3px);<br>&nbsp;&nbsp;box-shadow: 0 2px 0 #C13A08;<br>}</div>
+        <div style="font-size: 12px; line-height: 1.8; color: #A79C92;">下辺の5px影が沈む。おもちゃの手応え。平らな青いボタンとの差はここ。</div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 22px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+        <div class="maru" style="font-size: 15px; font-weight: 700;">蛍光マーカー</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="maru" style="font-size: 19px; font-weight: 900;">そのまま<span style="background: linear-gradient(transparent 56%, #FFDE7A 56%, #FFDE7A 94%, transparent 94%); background-size: 40% 100%; background-repeat: no-repeat;">サウナ</span>に</div>
+          <div class="maru" style="font-size: 19px; font-weight: 900;">そのまま<span class="marker">サウナ</span>に</div>
+        </div>
+        <div class="code" style="font-size: 11px; line-height: 1.8; background: #FFF6EC; border-radius: 10px; padding: 10px 12px; color: #6E655D;">background-size: 0% 100%<br>&nbsp;&nbsp;→ 100% 100%<br>0.5s cubic-bezier(.2,.8,.2,1)</div>
+        <div style="font-size: 12px; line-height: 1.8; color: #A79C92;">スクロールで引かれる。見出しに1本だけ。2本引くと効かなくなる。</div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 22px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+        <div class="maru" style="font-size: 15px; font-weight: 700;">丸バッジの弾み</div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="background: #DAF5E7; color: #1D8B50; font-size: 12px; font-weight: 700; padding: 6px 13px; border-radius: 999px; transform: scale(0.7); opacity: 0.4;">空きあり</div>
+          <div style="color: #C4B8AA; font-size: 15px;">→</div>
+          <div style="background: #DAF5E7; color: #1D8B50; font-size: 12px; font-weight: 700; padding: 6px 13px; border-radius: 999px;">空きあり</div>
+        </div>
+        <div class="code" style="font-size: 11px; line-height: 1.8; background: #FFF6EC; border-radius: 10px; padding: 10px 12px; color: #6E655D;">scale(.7) → scale(1.06)<br>&nbsp;&nbsp;→ scale(1)<br>0.34s / 判定が出た瞬間だけ</div>
+        <div style="font-size: 12px; line-height: 1.8; color: #A79C92;">確定値カードが降りてきた合図。<b style="color:#6E655D;">会話の吹き出しには絶対に付けない</b>——質感の差が消える。</div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 22px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+        <div class="maru" style="font-size: 15px; font-weight: 700;">カウントダウン</div>
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <div class="maru num" style="font-size: 28px; font-weight: 900; color: #0B6E7E;">27:41</div>
+          <div class="maru num" style="font-size: 28px; font-weight: 900; color: #A9D8E0;">27:40</div>
+        </div>
+        <div class="code" style="font-size: 11px; line-height: 1.8; background: #FFF6EC; border-radius: 10px; padding: 10px 12px; color: #6E655D;">font-variant-numeric:<br>&nbsp;&nbsp;tabular-nums;</div>
+        <div style="font-size: 12px; line-height: 1.8; color: #A79C92;"><b style="color:#241F1B;">等幅数字は動きのための規則でもある。</b>プロポーショナルだと毎秒 幅が揺れて、静かに減らせない。ブリーフの活字規則が、そのまま動きの要件になっている。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 割り当て ============ -->
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div class="maru" style="font-size: 19px; font-weight: 700;">05 — LP の節ごとの割り当て（改訂）</div>
+      <div style="flex: 1; height: 2px; background: #F0E4D6; border-radius: 2px;"></div>
+    </div>
+
+    <div style="background: #FFF; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 26px -12px rgba(120, 80, 50, 0.3); display: flex; flex-direction: column;">
+      <div style="display: grid; grid-template-columns: 190px 200px 1fr; gap: 16px; padding: 12px 20px; background: #241F1B;">
+        <div class="num" style="font-size: 10.5px; letter-spacing: 0.16em; color: #FFF6EC; font-weight: 600;">節</div>
+        <div class="num" style="font-size: 10.5px; letter-spacing: 0.16em; color: #FFF6EC; font-weight: 600;">演出</div>
+        <div class="num" style="font-size: 10.5px; letter-spacing: 0.16em; color: #FFF6EC; font-weight: 600;">明るい地での作り</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 190px 200px 1fr; gap: 16px; padding: 14px 20px; background: #FFF6EC; align-items: center;"><div class="maru" style="font-size: 14px; font-weight: 700;">00 ヒーロー</div><div><span style="background: #FFE6D8; color: #D8410B; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">Blaze</span></div><div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><span class="code">glow: 0 / smoke: 0 / distortion: 0.9</span>。見出しの裏で陽炎だけが揺れ、オレンジの粒がまばらに上がる。<b style="color:#241F1B;">クリームにオレンジの粒は E の語彙そのもの。</b></div></div>
+      <div style="display: grid; grid-template-columns: 190px 200px 1fr; gap: 16px; padding: 14px 20px; align-items: center;"><div class="maru" style="font-size: 14px; font-weight: 700;">01 熱</div><div><span style="background: #DAF5E7; color: #1D8B50; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">Clouds</span></div><div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><span class="code">color: "auto"</span> で地を自動追従。<b style="color:#241F1B;"><span class="code">shadow: 0.5</span> で蒸気が影を落とす</b>——明るい地では光る蒸気より、影のある蒸気のほうが読める。</div></div>
+      <div style="display: grid; grid-template-columns: 190px 200px 1fr; gap: 16px; padding: 14px 20px; background: #FFF6EC; align-items: center;"><div class="maru" style="font-size: 14px; font-weight: 700;">02 冷</div><div><span style="background: #D5F2F7; color: #0B8CA0; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">Liquid</span></div><div style="font-size: 13px; line-height: 1.85; color: #3A342E;">歪みだけ使う（<span class="code">distortion: 0.8 / blend: 0.15</span>）。色を乗せるとクリームが濁る。<b style="color:#241F1B;">この節は元から地に依存しないので一番安全。</b></div></div>
+      <div style="display: grid; grid-template-columns: 190px 200px 1fr; gap: 16px; padding: 14px 20px; align-items: center;"><div class="maru" style="font-size: 14px; font-weight: 700;">03 整</div><div><span style="background: #DAF5E7; color: #1D8B50; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">ParticleScroll</span></div><div style="font-size: 13px; line-height: 1.85; color: #3A342E;">210px の「整」が砂から結像する。地の色は自動で読む。<span class="code">fade: 0.5</span> に上げないと、散った砂がクリームに溶けて見えない。</div></div>
+      <div style="display: grid; grid-template-columns: 190px 200px 1fr; gap: 16px; padding: 14px 20px; background: #FFF6EC; align-items: center;"><div class="maru" style="font-size: 14px; font-weight: 700;">04 物流 / 05 料金</div><div><span style="background: #F0E4D6; color: #6E655D; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">なし</span></div><div style="font-size: 13px; line-height: 1.85; color: #3A342E;">日付と金額の面。CSS のみ（バッジの弾み・ピルの押し込み）。<b style="color:#241F1B;">ブリーフ §6「ノイズを立てない」。</b></div></div>
+      <div style="display: grid; grid-template-columns: 190px 200px 1fr; gap: 16px; padding: 14px 20px; align-items: center;"><div class="maru" style="font-size: 14px; font-weight: 700;">06 流れ（天候カード）</div><div><span style="background: #D5F2F7; color: #0B8CA0; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">Droplets</span></div><div style="font-size: 13px; line-height: 1.85; color: #3A342E;"><b style="color:#241F1B;">新規追加。</b>天候の所見カードの中だけに限定して雨粒。<span class="code">vignette: 0.35</span> が縁を暗くするので明るい地でも効く。カード1枚ぶんなら §6 を破らない。</div></div>
+      <div style="display: grid; grid-template-columns: 190px 200px 1fr; gap: 16px; padding: 14px 20px; background: #FFF6EC; align-items: center;"><div class="maru" style="font-size: 14px; font-weight: 700;">08 末尾</div><div><span style="background: #FFE6D8; color: #D8410B; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">Blaze 弱</span></div><div style="font-size: 13px; line-height: 1.85; color: #3A342E;">00 の再演。<span class="code">sparks: 0.4 / distortion: 0.5</span> と半分に落とす。同じ作品の終わりだと分かる程度に。</div></div>
+    </div>
+
+    <div style="background: #FFF0C4; border-radius: 18px; padding: 18px 24px; display: flex; align-items: flex-start; gap: 14px;">
+      <div style="width: 24px; height: 24px; border-radius: 999px; background: #FFC93C; color: #241F1B; font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">!</div>
+      <div style="font-size: 13.5px; line-height: 1.9; color: #6B4E00;"><b style="color:#241F1B;">未検証が2つ。</b>① <b>Bubble</b> はノブがないので、実際に置いて目視するまで明るい地での可否が分からない。使わない前提で組むのが安全。② ブリーフ §7 の <span class="code">chrome://flags/#canvas-draw-element</span> 依存は palette と無関係に残る。<b style="color:#241F1B;">演出が全部止まっても LP が成立する構造</b>は E でも維持すること — 上の割り当ては全部「あれば良くなる」であって、「ないと意味が通らない」ものは1つもない。</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

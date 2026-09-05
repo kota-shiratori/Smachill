@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap">
+  <style>
+    body { margin: 0; }
+    .marker { background: linear-gradient(transparent 56%, #FFDE7A 56%, #FFDE7A 94%, transparent 94%); }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #FFF6EC; font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; color: #241F1B; padding: 44px 48px 52px; display: flex; flex-direction: column; gap: 40px;">
+
+  <!-- ヘッダ -->
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="background: #FF5A1F; color: #fff; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; padding: 6px 12px; border-radius: 999px;">方向 E</div>
+        <div style="background: #FFF; border: 2px solid #FFD9C4; color: #D8410B; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">ポップ / 掴みやすい</div>
+      </div>
+      <div style="font-family: 'Zen Maru Gothic', 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 44px; line-height: 1.25; letter-spacing: 0.01em;">重さを捨てて、<span class="marker">最初の3秒</span>を取りにいく。</div>
+      <div style="font-size: 14px; line-height: 1.95; color: #6E655D; max-width: 46em;">方向 D（暗い / 明朝 / 罫線）は「作品」としては強いが、初見の人が身構える。E は<b style="color:#241F1B;">同じ情報構造のまま</b>、地を明るくし、書体を丸ゴシックにし、面を角丸にして、入口の敷居だけを下げる案。</div>
+    </div>
+    <div style="width: 330px; flex-shrink: 0; background: #FFF; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 11px; box-shadow: 0 6px 22px -8px rgba(120, 80, 50, 0.2);">
+      <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.2em; color: #A79C92;">REFERENCE</div>
+      <div style="font-size: 13px; line-height: 1.9; color: #6E655D;">chot-inc.com から借りたのは<b style="color:#241F1B;">構造だけ</b> — 明るい地、丸い面、やわらかい影、そして<b style="color:#241F1B;">ヒーロー直下にチャット入力がある</b>こと。</div>
+      <div style="height: 1px; background: #F0E4D6;"></div>
+      <div style="font-size: 13px; line-height: 1.9; color: #6E655D;">借りなかったのは<b style="color:#D8410B;">色</b>。あの淡い青をそのまま使うと、ブリーフ §8 の「テンプレSaaS」に着地する。ここは火と水で振り切る。</div>
+    </div>
+  </div>
+
+  <!-- ============ パレット ============ -->
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px;">01 — パレット</div>
+      <div style="flex: 1; height: 2px; background: #F0E4D6; border-radius: 2px;"></div>
+      <div style="font-size: 12.5px; color: #A79C92;">熱と冷の対比は D から引き継ぐ。彩度だけ上げる</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px;">
+
+      <div style="background: #FFF; border-radius: 18px; overflow: hidden; box-shadow: 0 5px 18px -8px rgba(120, 80, 50, 0.22);">
+        <div style="height: 84px; background: #FFF6EC; border-bottom: 1px solid #F0E4D6;"></div>
+        <div style="padding: 13px 15px; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 12.5px; font-weight: 700;">地 / ground</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; color: #A79C92;">#FFF6EC</div>
+          <div style="font-size: 11px; line-height: 1.7; color: #6E655D;">白ではなく、陽の当たった生成り</div>
+        </div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 18px; overflow: hidden; box-shadow: 0 5px 18px -8px rgba(120, 80, 50, 0.22);">
+        <div style="height: 84px; background: #FF5A1F;"></div>
+        <div style="padding: 13px 15px; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 12.5px; font-weight: 700; color: #D8410B;">熱 / heat</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; color: #A79C92;">#FF5A1F</div>
+          <div style="font-size: 11px; line-height: 1.7; color: #6E655D;">主CTAと「今」を指す色。1画面に2つまで</div>
+        </div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 18px; overflow: hidden; box-shadow: 0 5px 18px -8px rgba(120, 80, 50, 0.22);">
+        <div style="height: 84px; background: #12B5CE;"></div>
+        <div style="padding: 13px 15px; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 12.5px; font-weight: 700; color: #0B8CA0;">冷 / cool</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; color: #A79C92;">#12B5CE</div>
+          <div style="font-size: 11px; line-height: 1.7; color: #6E655D;">水風呂・残り時間・システム側の発言</div>
+        </div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 18px; overflow: hidden; box-shadow: 0 5px 18px -8px rgba(120, 80, 50, 0.22);">
+        <div style="height: 84px; background: #FFC93C;"></div>
+        <div style="padding: 13px 15px; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 12.5px; font-weight: 700; color: #B07C00;">陽 / sun</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; color: #A79C92;">#FFC93C</div>
+          <div style="font-size: 11px; line-height: 1.7; color: #6E655D;">蛍光マーカー・ステッカー。E の「ポップ」担当</div>
+        </div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 18px; overflow: hidden; box-shadow: 0 5px 18px -8px rgba(120, 80, 50, 0.22);">
+        <div style="height: 84px; background: #2FBF71;"></div>
+        <div style="padding: 13px 15px; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 12.5px; font-weight: 700; color: #1D8B50;">可 / ok</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; color: #A79C92;">#2FBF71</div>
+          <div style="font-size: 11px; line-height: 1.7; color: #6E655D;">「空きあり」専用。他に流用しない</div>
+        </div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 18px; overflow: hidden; box-shadow: 0 5px 18px -8px rgba(120, 80, 50, 0.22);">
+        <div style="height: 84px; background: #F2415F;"></div>
+        <div style="padding: 13px 15px; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 12.5px; font-weight: 700; color: #C81F3D;">否 / alert</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; color: #A79C92;">#F2415F</div>
+          <div style="font-size: 11px; line-height: 1.7; color: #6E655D;">失敗・満室。責めない濃度に留める</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 12px;">
+      <div style="flex: 1; background: #FFE6D8; border-radius: 14px; padding: 12px 16px; font-size: 12px; color: #8A3B12;"><b>heat-soft</b> &nbsp;#FFE6D8 — 熱の面</div>
+      <div style="flex: 1; background: #D5F2F7; border-radius: 14px; padding: 12px 16px; font-size: 12px; color: #0B6E7E;"><b>cool-soft</b> &nbsp;#D5F2F7 — 冷の面</div>
+      <div style="flex: 1; background: #FFF0C4; border-radius: 14px; padding: 12px 16px; font-size: 12px; color: #8A6400;"><b>sun-soft</b> &nbsp;#FFF0C4 — 注釈の面</div>
+      <div style="flex: 1; background: #DAF5E7; border-radius: 14px; padding: 12px 16px; font-size: 12px; color: #1D8B50;"><b>ok-soft</b> &nbsp;#DAF5E7 — 空きありの面</div>
+      <div style="flex: 1; background: #FFF; border: 2px solid #F0E4D6; border-radius: 14px; padding: 10px 16px; font-size: 12px; color: #6E655D;"><b>line</b> &nbsp;#F0E4D6 — 罫は2pxに太らせる</div>
+    </div>
+  </div>
+
+  <!-- ============ タイポ ============ -->
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px;">02 — タイポグラフィ</div>
+      <div style="flex: 1; height: 2px; background: #F0E4D6; border-radius: 2px;"></div>
+      <div style="font-size: 12.5px; color: #A79C92;">明朝は全廃。等幅数字の役割だけ D から残す</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: 18px;">
+
+      <div style="background: #FFF; border-radius: 20px; padding: 26px 28px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 6px 22px -8px rgba(120, 80, 50, 0.2);">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <div style="background: #FFE6D8; color: #D8410B; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 999px;">見出し</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10.5px; color: #A79C92;">Zen Maru Gothic 900</div>
+        </div>
+        <div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: 40px; line-height: 1.3;">好きな水辺が、<br>そのまま<span class="marker">サウナ</span>になる。</div>
+        <div style="font-size: 12px; line-height: 1.85; color: #6E655D;">丸ゴシックは日本語の角を落とす。同じ文でも、明朝で組んだ D より<b style="color:#241F1B;">2段階やわらかい</b>。ポップの正体はほぼこれ。</div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 20px; padding: 26px 28px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 6px 22px -8px rgba(120, 80, 50, 0.2);">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <div style="background: #D5F2F7; color: #0B8CA0; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 999px;">本文</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10.5px; color: #A79C92;">Zen Kaku Gothic New 400</div>
+        </div>
+        <div style="font-size: 15px; line-height: 2.0; color: #3A342E;">MORZH のテントサウナ一式を、薪と道具ごと全国へ発送します。日程と届け先を話しかけるだけで、空き状況と金額の内訳がその場で出ます。</div>
+        <div style="font-size: 12px; line-height: 1.85; color: #6E655D;">本文まで丸ゴシックにすると幼くなる。<b style="color:#241F1B;">見出しだけ丸、本文は角</b>。この分担が効く。</div>
+      </div>
+
+      <div style="background: #FFF; border-radius: 20px; padding: 26px 28px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 6px 22px -8px rgba(120, 80, 50, 0.2);">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <div style="background: #FFF0C4; color: #8A6400; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 999px;">数値</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10.5px; color: #A79C92;">IBM Plex Mono</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 7px;">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.01em;">¥44,000</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 17px; font-variant-numeric: tabular-nums; color: #3A342E;">09.20 → 09.21</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 17px; font-variant-numeric: tabular-nums; color: #0B8CA0;">27:41</div>
+        </div>
+        <div style="font-size: 12px; line-height: 1.85; color: #6E655D;">ここは<b style="color:#241F1B;">変えない</b>。金額と日付が等幅で桁が揃うことが、「これはAIの作文ではない」の唯一の担保。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 同じパーツ3点 ============ -->
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px;">03 — 同じパーツを、Eで組み直す</div>
+      <div style="flex: 1; height: 2px; background: #F0E4D6; border-radius: 2px;"></div>
+      <div style="font-size: 12.5px; color: #A79C92;">①発話 ②確定値カード ③主ボタン</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start;">
+
+      <!-- ① AI発話 -->
+      <div style="background: #FFF; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 16px; min-height: 250px; box-shadow: 0 6px 22px -8px rgba(120, 80, 50, 0.2);">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.18em; color: #A79C92;">① AIの発話</div>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="width: 30px; height: 30px; border-radius: 999px; background: #FFE6D8; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <div style="width: 9px; height: 9px; border-radius: 999px; background: #FF5A1F;"></div>
+          </div>
+          <div style="font-size: 15px; line-height: 1.95; color: #3A342E;">空いてます！ 実機を30分お預かりしました。</div>
+        </div>
+        <div style="height: 2px; background: #F7EDE2; border-radius: 2px;"></div>
+        <div style="font-size: 12px; line-height: 1.85; color: #6E655D;">吹き出しの箱を持たない。<b style="color:#241F1B;">地の文として流れる</b>。丸いアイコンだけが話者を示す。金額はここに絶対に書かない。</div>
+      </div>
+
+      <!-- ② 確定値カード -->
+      <div style="background: #FFF; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 16px; min-height: 250px; box-shadow: 0 6px 22px -8px rgba(120, 80, 50, 0.2);">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.18em; color: #A79C92;">② 確定値のカード</div>
+
+        <div style="border-radius: 16px; overflow: hidden; border: 2px solid #241F1B; box-shadow: 0 5px 0 0 #241F1B;">
+          <div style="background: #241F1B; padding: 9px 14px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.16em; color: #FFF6EC; font-weight: 600;">ESTIMATE</div>
+            <div style="font-size: 10px; color: #FFC93C; font-weight: 700;">サーバー確定値</div>
+          </div>
+          <div style="background: #FFF; padding: 14px; display: flex; flex-direction: column; gap: 9px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="background: #DAF5E7; color: #1D8B50; font-size: 11.5px; font-weight: 700; padding: 4px 11px; border-radius: 999px;">空きあり</div>
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; color: #6E655D; font-variant-numeric: tabular-nums;">09.20 → 09.21 / 千葉県</div>
+            </div>
+            <div style="display: flex; align-items: baseline; justify-content: space-between; padding-top: 9px; border-top: 2px solid #F7EDE2;">
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; color: #A79C92; letter-spacing: 0.12em;">TOTAL</div>
+              <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.01em;">¥38,000</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size: 12px; line-height: 1.85; color: #6E655D;">D では<b>罫線と角丸ゼロ</b>で「別レイヤー」を作っていた。E ではそれを<b style="color:#241F1B;">2pxの黒枠と、下にずれた影</b>で作る。丸いのに、明らかに硬い物体。</div>
+      </div>
+
+      <!-- ③ 主ボタン -->
+      <div style="background: #FFF; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 16px; min-height: 250px; box-shadow: 0 6px 22px -8px rgba(120, 80, 50, 0.2);">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.18em; color: #A79C92;">③ 主ボタン</div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="background: #FF5A1F; color: #FFF; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 16px; padding: 16px 24px; border-radius: 999px; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 5px 0 0 #C13A08;">
+            <span>この内容で予約する</span>
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h10"></path><path d="M9 4.5L12.5 8 9 11.5"></path></svg>
+          </div>
+          <div style="background: #FFF; border: 2px solid #FFD9C4; color: #D8410B; font-weight: 700; font-size: 14px; padding: 12px 22px; border-radius: 999px; display: flex; align-items: center; justify-content: center;">条件を変えて聞き直す</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div style="background: #FFF; border: 2px solid #F0E4D6; color: #6E655D; font-size: 12.5px; padding: 7px 14px; border-radius: 999px;">3泊に延ばしたい</div>
+            <div style="background: #FFF; border: 2px solid #F0E4D6; color: #6E655D; font-size: 12.5px; padding: 7px 14px; border-radius: 999px;">雨だったら？</div>
+          </div>
+        </div>
+
+        <div style="font-size: 12px; line-height: 1.85; color: #6E655D;">全部ピル。押せるものだけが丸くなる。下辺の<b style="color:#241F1B;">濃い影 5px</b> が「厚み」を出す — 平らな青いボタンとの差はここ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 操作 ============ -->
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px;">04 — D から E へ、動かしたもの / 動かさないもの</div>
+      <div style="flex: 1; height: 2px; background: #F0E4D6; border-radius: 2px;"></div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+      <div style="background: #FFF; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 6px 22px -8px rgba(120, 80, 50, 0.2);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: #FF5A1F; color: #fff; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">動かした</div>
+          <div style="font-size: 13px; color: #A79C92;">見た目のレイヤーだけ</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; line-height: 1.8;">
+          <div style="display: flex; gap: 11px;"><div style="color: #FF5A1F; font-weight: 700;">01</div><div>地を <span style="font-family:'IBM Plex Mono',monospace; font-size:12px;">#0C0A09</span> → <span style="font-family:'IBM Plex Mono',monospace; font-size:12px;">#FFF6EC</span>。夜から昼へ</div></div>
+          <div style="display: flex; gap: 11px;"><div style="color: #FF5A1F; font-weight: 700;">02</div><div>見出しを明朝 → <b>丸ゴシック</b>。これが最大の変化</div></div>
+          <div style="display: flex; gap: 11px;"><div style="color: #FF5A1F; font-weight: 700;">03</div><div>角丸 0px → <b>20px</b>、ボタンは <b>999px</b></div></div>
+          <div style="display: flex; gap: 11px;"><div style="color: #FF5A1F; font-weight: 700;">04</div><div>1px の暗い罫 → <b>2px の明るい罫とやわらかい影</b></div></div>
+          <div style="display: flex; gap: 11px;"><div style="color: #FF5A1F; font-weight: 700;">05</div><div>ステッカー・蛍光マーカー・丸アイコンを追加</div></div>
+          <div style="display: flex; gap: 11px;"><div style="color: #FF5A1F; font-weight: 700;">06</div><div>文体を「です」→ <b>「空いてます！」</b> 半歩だけ砕く</div></div>
+        </div>
+      </div>
+
+      <div style="background: #241F1B; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: #FFC93C; color: #241F1B; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">動かさない</div>
+          <div style="font-size: 13px; color: #9A9086;">ブリーフの約束</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; line-height: 1.8; color: #E8E0D6;">
+          <div style="display: flex; gap: 11px;"><div style="color: #FFC93C; font-weight: 700;">01</div><div><b>AIの地の文に金額を書かない。</b>確定値は必ず別の面</div></div>
+          <div style="display: flex; gap: 11px;"><div style="color: #FFC93C; font-weight: 700;">02</div><div>金額・日付・残り時間は<b>等幅＋tabular-nums</b></div></div>
+          <div style="display: flex; gap: 11px;"><div style="color: #FFC93C; font-weight: 700;">03</div><div>日本語が主。英語は<b>ラベルまで</b></div></div>
+          <div style="display: flex; gap: 11px;"><div style="color: #FFC93C; font-weight: 700;">04</div><div>熱 / 冷 の温度差をパレットが持つ</div></div>
+          <div style="display: flex; gap: 11px;"><div style="color: #FFC93C; font-weight: 700;">05</div><div>「空きなし」で会話を終わらせない</div></div>
+          <div style="display: flex; gap: 11px;"><div style="color: #FFC93C; font-weight: 700;">06</div><div>絵文字で飾らない。<b>色面と形</b>でポップを作る</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #FFF0C4; border-radius: 18px; padding: 18px 24px; display: flex; align-items: flex-start; gap: 14px;">
+      <div style="width: 24px; height: 24px; border-radius: 999px; background: #FFC93C; color: #241F1B; font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">!</div>
+      <div style="font-size: 13.5px; line-height: 1.9; color: #6B4E00;"><b style="color:#241F1B;">承知のうえで踏んでいる禁止事項が1つある。</b> ブリーフ §8 は「角丸カード＋薄い地＋均一なボタン」を汎用SaaSとして禁じていた。E はその形をとる。逃げ方は<b style="color:#241F1B;">彩度と厚み</b> — 淡い青灰ではなく <span style="font-family:'IBM Plex Mono',monospace;">#FF5A1F</span> と <span style="font-family:'IBM Plex Mono',monospace;">#FFC93C</span>、平らな面ではなく下辺に影を落とした立体。SaaS に見えたら、この2つが足りていない。</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap">
+  <style>
+    body { margin: 0; }
+    .maru { font-family: 'Zen Maru Gothic', 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif; }
+    .num { font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; }
+    .pop { box-shadow: 0 5px 0 0 #C13A08; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #FFF6EC; font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; color: #241F1B; padding: 34px 40px 40px; display: flex; flex-direction: column; gap: 22px;">
+
+  <div style="display: flex; align-items: center; gap: 14px;">
+    <div class="maru" style="font-size: 19px; font-weight: 700;">02 — 必ず描く3状態</div>
+    <div style="flex: 1; height: 2px; background: #F0E4D6; border-radius: 2px;"></div>
+    <div style="font-size: 12.5px; color: #A79C92;">ここを描かない設計は、実装で必ず破綻する</div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: start;">
+
+    <!-- 1. 照会中 -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <div style="background: #FFF0C4; color: #8A6400; font-size: 11.5px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">01 — 照会中</div>
+        <div class="num" style="font-size: 10.5px; letter-spacing: 0.14em; color: #C4B8AA;">PENDING</div>
+      </div>
+      <div style="background: #FFF; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px; min-height: 272px; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="width: 30px; height: 30px; border-radius: 999px; background: #FFE6D8; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><div style="width: 9px; height: 9px; border-radius: 999px; background: #FF5A1F;"></div></div>
+          <div style="font-size: 14.5px; line-height: 1.9; color: #A79C92;">空きを見ています…</div>
+        </div>
+
+        <div style="border-radius: 18px; overflow: hidden; border: 2px solid #E8DACA;">
+          <div style="background: #F7EDE2; padding: 10px 15px; display: flex; align-items: center; justify-content: space-between;">
+            <div class="num" style="font-size: 10.5px; letter-spacing: 0.16em; color: #A79C92; font-weight: 600;">AVAILABILITY</div>
+            <div style="width: 46px; height: 9px; border-radius: 999px; background: #E5D6C4;"></div>
+          </div>
+          <div style="background: #FFF; padding: 16px 15px; display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 68px; height: 26px; border-radius: 999px; background: #F0E4D6;"></div>
+              <div style="width: 116px; height: 14px; border-radius: 999px; background: #F0E4D6;"></div>
+            </div>
+            <div style="width: 152px; height: 10px; border-radius: 999px; background: #F7EDE2;"></div>
+          </div>
+        </div>
+
+        <div style="font-size: 12px; line-height: 1.85; color: #A79C92;">枠は先に出す。<b style="color: #6E655D;">値だけが後から入る。</b>会話は流れてくるが、確定値は流れてこない。</div>
+      </div>
+    </div>
+
+    <!-- 2. 通信エラー -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <div style="background: #FFE3E8; color: #C81F3D; font-size: 11.5px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">02 — 取得失敗</div>
+        <div class="num" style="font-size: 10.5px; letter-spacing: 0.14em; color: #C4B8AA;">ERROR</div>
+      </div>
+      <div style="background: #FFF; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px; min-height: 272px; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="width: 30px; height: 30px; border-radius: 999px; background: #FFE6D8; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><div style="width: 9px; height: 9px; border-radius: 999px; background: #FF5A1F;"></div></div>
+          <div style="font-size: 14.5px; line-height: 1.9; color: #3A342E;">空き状況が取れませんでした。日程はそのまま覚えています。</div>
+        </div>
+
+        <div style="border-radius: 18px; overflow: hidden; border: 2px solid #F2415F;">
+          <div style="background: #F2415F; padding: 10px 15px; display: flex; align-items: center; justify-content: space-between;">
+            <div class="num" style="font-size: 10.5px; letter-spacing: 0.16em; color: #FFF; font-weight: 600;">AVAILABILITY</div>
+            <div style="background: rgba(255,255,255,0.25); color: #FFF; font-size: 10.5px; font-weight: 700; padding: 3px 10px; border-radius: 999px;">取得失敗</div>
+          </div>
+          <div style="background: #FFF; padding: 16px 15px; display: flex; flex-direction: column; gap: 14px;">
+            <div class="num" style="font-size: 12.5px; color: #6E655D;">09.20 → 09.21 / 千葉県 / 2泊</div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <div class="maru" style="background: #F2415F; color: #FFF; font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 999px; box-shadow: 0 4px 0 0 #C81F3D;">もう一度試す</div>
+              <div style="font-size: 13px; font-weight: 500; color: #6E655D;">条件を変える</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size: 12px; line-height: 1.85; color: #A79C92;">失敗しても入力は捨てない。<b style="color: #6E655D;">もう一度打ち直させた時点で負け。</b></div>
+      </div>
+    </div>
+
+    <!-- 3. 仮押さえ失効 -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <div style="background: #F0E4D6; color: #6E655D; font-size: 11.5px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">03 — 仮押さえ失効</div>
+        <div class="num" style="font-size: 10.5px; letter-spacing: 0.14em; color: #C4B8AA;">EXPIRED</div>
+      </div>
+      <div style="background: #FFF; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px; min-height: 272px; box-shadow: 0 6px 22px -10px rgba(120, 80, 50, 0.28);">
+
+        <div style="background: #F7EDE2; border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <div class="maru" style="font-size: 13px; font-weight: 700; color: #A79C92;">仮押さえ 終了</div>
+            <div class="maru num" style="font-size: 26px; font-weight: 900; color: #C4B8AA;">00:00</div>
+          </div>
+          <div style="height: 8px; background: #EBDCC9; border-radius: 999px;"></div>
+          <div style="font-size: 12.5px; line-height: 1.85; color: #6E655D;">30分が過ぎたので、実機を解放しました。まだ空いていれば、すぐ取り直せます。</div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="width: 30px; height: 30px; border-radius: 999px; background: #FFE6D8; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><div style="width: 9px; height: 9px; border-radius: 999px; background: #FF5A1F;"></div></div>
+          <div style="font-size: 14.5px; line-height: 1.9; color: #3A342E;">同じ条件で、もう一度見ますか。</div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div class="maru pop" style="background: #FF5A1F; color: #FFF; font-size: 13.5px; font-weight: 700; padding: 12px 22px; border-radius: 999px;">もう一度空きを見る</div>
+          <div style="font-size: 13px; font-weight: 500; color: #6E655D;">やめる</div>
+        </div>
+
+        <div style="font-size: 12px; line-height: 1.85; color: #A79C92;">失効は事故ではなく仕様。<b style="color: #6E655D;">責める文面にしない。</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
